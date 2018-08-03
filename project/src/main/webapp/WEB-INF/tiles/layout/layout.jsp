@@ -20,11 +20,22 @@
 </head>
 
 <body>
-	<div id="container">
-		<tiles:insertAttribute name="header" />
-		<tiles:insertAttribute name="content" />
+	<div id="wrap">
+		<div id="header">
+			<tiles:insertAttribute name="header" />
+		</div>
+		<div id="sidemenu">
+			<tiles:insertAttribute name="menu" />
+		</div>
+		<div id="container">
+			<div id="content">
+				<tiles:insertAttribute name="content" />
+			</div>
+		</div>
+		<div id="footer">
+			<tiles:insertAttribute name="footer" />
+		</div>
 	</div>
-	<tiles:insertAttribute name="footer" />
 </body>
 
 <!-- Bootstrap core JavaScript-->

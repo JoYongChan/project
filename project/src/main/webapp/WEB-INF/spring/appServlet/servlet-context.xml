@@ -23,7 +23,7 @@
 
 	<context:component-scan base-package="com.naver.project" />
 	
-		<!-- tiles -->
+	<!-- tiles -->
 	<beans:bean id="tilesviewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>
 	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">	
 		<beans:property name="definitions">
