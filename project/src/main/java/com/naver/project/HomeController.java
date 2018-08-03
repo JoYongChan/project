@@ -1,4 +1,4 @@
-package com.naver.tilesex;
+package com.naver.project;
 
 import java.text.DateFormat;
 import java.util.Date;
