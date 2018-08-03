@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class HomeController {
+<<<<<<< HEAD
+=======
+
+	//ffffffff
+	//ddd
+>>>>>>> 28a512f2818b6e9f04787906ade4b92bf7c404f1
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
