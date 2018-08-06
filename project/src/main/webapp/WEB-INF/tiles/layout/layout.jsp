@@ -20,19 +20,15 @@
 </head>
 
 <body>
-	<div id="wrap">
-		<div id="header">
-			<tiles:insertAttribute name="header" />
-		</div>
-		<div id="sidemenu">
+	<tiles:insertAttribute name="header" />
+	<div id="container">
+		<div class="row">
 			<tiles:insertAttribute name="menu" />
-		</div>
-		<div id="container">
-			<div id="content">
+			<div class="wrapper">
 				<tiles:insertAttribute name="content" />
 			</div>
 		</div>
-		<div id="footer">
+		<div class="row">
 			<tiles:insertAttribute name="footer" />
 		</div>
 	</div>
