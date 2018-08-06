@@ -23,8 +23,10 @@
 	<tiles:insertAttribute name="header" />
 	<div id="container">
 		<div class="row">
-			<tiles:insertAttribute name="menu" />
-			<div class="wrapper">
+			<div class="col-md-2 wrapper">
+				<tiles:insertAttribute name="menu" />
+			</div>
+			<div class="wrapper col-md-10">
 				<tiles:insertAttribute name="content" />
 			</div>
 		</div>
