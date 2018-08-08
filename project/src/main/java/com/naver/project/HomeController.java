@@ -17,29 +17,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
-		model.addAttribute("serverTime", formattedDate );
-		return "home";
+		model.addAttribute("serverTime", formattedDate);
+		return "login/login";
 	}
-	
+
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String goHome() {
-		return "redirect:/";
+		return "home";
 	}
-	
+
 	@RequestMapping(value = "/stockBuyForm", method = RequestMethod.GET)
 	public String stockInsertForm(Model model) {
 		return "stock/stock_buy_form";
 	}
+
 	@RequestMapping(value = "/stockList", method = RequestMethod.GET)
 	public String stockList(Model model) {
 		return "stock/stock_list";
 	}
-	
+
 }

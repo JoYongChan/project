@@ -6,11 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body id="menu">
 	<nav>
 	<!-- Sidebar -->
 	<ul class="sidebar navbar-nav">
-		<li class="nav-item active"><a class="nav-link" href="home">
+		<li class="nav-item active"><a class="nav-link" href="home" id="menuhome">
 				<i class="fas fa-fw fa-tachometer-alt"></i> <span>Home</span>
 		</a></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"

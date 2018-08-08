@@ -50,4 +50,5 @@
 <!-- Demo scripts for this page-->
 <script src="resources/js/demo/datatables-demo.js"></script>
 <script src="resources/js/demo/chart-area-demo.js"></script>
+<script src="resources/js/myquery.js"></script>
 </html>
