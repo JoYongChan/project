@@ -41,6 +41,16 @@
 				</div>
 			</li>
 			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle"	href="#" id="pagesDropdown" 
+					role="button" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false"> 
+					<i class="fas fa-fw fa-folder"></i> <span>고객관리</span>
+				</a>
+				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
+					<a class="dropdown-item" href="guestInsertForm">고객가입</a> 
+					<a class="dropdown-item" href="guestListForm">고객목록</a> 
+				</div>
+			</li>
+			<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle"	href="#" id="pagesDropdown" 
 					role="button" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false"> 
 					<i class="fas fa-fw fa-folder"></i> <span>재고관리</span>
