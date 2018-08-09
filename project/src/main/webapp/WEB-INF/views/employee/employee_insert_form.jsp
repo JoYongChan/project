@@ -75,7 +75,7 @@
 						<span class="input-group-text" style="width: 120px"> 우편번호</span>
 					</div>
 					<input id="postno" name="postno" type="text" class="form-control" placeholder="PostNo" aria-label="Usernzipcode" aria-describedby="basic-addon1">
-					<button onclick="ZipcodeemployeeFind()" type="button" class="btn btn-primary" style="color: #000000">찾기</button>
+					<button onclick="ZipcodeFind()" type="button" class="btn btn-primary" style="color: #000000">찾기</button>
 				</div>
 			</div>
 			
