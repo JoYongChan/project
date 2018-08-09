@@ -11,7 +11,4 @@
 		id="VenderProductMap">
 	</resultMap>
 	
-	<select id="selectVenderAll" resultType="VenderMap">
-		select * from vender
-	</select>
 </mapper>
