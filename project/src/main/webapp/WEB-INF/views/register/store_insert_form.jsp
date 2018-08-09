@@ -50,7 +50,7 @@
 						<span class="input-group-text" style="width: 120px"> StorePass </span>
 					</div>
 					<input type="text" id="storepass" name="storepass" class="form-control" placeholder="storepassword"
-						style="ime-mode: disabled" aria-describedby="basic-addon1" maxlength="20">
+						 aria-describedby="basic-addon1" maxlength="20">
 				</div>
 			</div>
 			
@@ -61,7 +61,7 @@
 						<span class="input-group-text" style="width: 120px"> StoreName </span>
 					</div>
 					<input type="text" id="storename" name="storename" class="form-control" placeholder="매장명"
-						style="ime-mode: disabled" aria-describedby="basic-addon1" maxlength="20">
+						 aria-describedby="basic-addon1" maxlength="20">
 				</div>
 			</div>
 			
@@ -123,7 +123,8 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text" style="width: 120px"> 매장전화번호 </span>
 					</div>
-					<input id="storephone" name="storephone" type="text" class="form-control" placeholder="매장 전화번호" aria-label="Usernzipcode" aria-describedby="basic-addon1">
+					<input id="storephone" name="storephone" type="text" class="form-control" placeholder="매장 전화번호" aria-label="Usernzipcode" aria-describedby="basic-addon1"
+					maxlength="11">
 				</div>
 			</div>
 

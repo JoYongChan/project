@@ -81,7 +81,8 @@
 					</a>
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
 					<a class="dropdown-item" href="employeeInsertForm">직원 등록</a> 
-					<a class="dropdown-item" href="#">직원 리스트</a>
+					<a class="dropdown-item" href="employeeListForm">직원 리스트</a>
+					<a class="dropdown-item" href="employeeSalaryForm">직원 급여</a>
 				</div>
 			</li>
 	</ul>

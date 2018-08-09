@@ -11,4 +11,14 @@ public class EmployeeController {
 	public String employeeInsertForm(Model model) {
 		return "employee/employee_insert_form";
 	}
+	
+	@RequestMapping(value = "/employeeListForm", method = RequestMethod.GET)
+	public String employeeListForm(Model model) {
+		return "employee/employee_list_form";
+	}
+	
+	@RequestMapping(value = "/employeeSalaryForm", method = RequestMethod.GET)
+	public String employeeSalaryForm(Model model) {
+		return "employee/employee_salary_form";
+	}
 }

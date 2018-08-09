@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.naver.project.service.StoremanagementDAO">
+	<resultMap type="com.naver.project.entities.Storemanagement" id="storemanagementMap">
+	</resultMap>
+	
+	<insert id="insertRow" parameterType="HashMap">
+		insert into storemanagement(storecode,ceocode,storepass,storename,
+		busno,postno,newaddr,oldaddr,detailaddr,storephone
+		)values(
+		#{storecode,jdbcType=VARCHAR},#{ceocode,jdbcType=VARCHAR},
+		#{storepass,jdbcType=VARCHAR},#{storename,jdbcType=VARCHAR},
+		#{busno,jdbcType=VARCHAR},#{postno,jdbcType=VARCHAR},
+		#{newaddr,jdbcType=VARCHAR},#{oldaddr,jdbcType=VARCHAR},
+		#{detailaddr,jdbcType=VARCHAR},#{storephone,jdbcType=VARCHAR}
+		)
+	</insert>
+ </mapper>

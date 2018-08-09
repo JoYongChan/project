@@ -37,11 +37,11 @@ function ZipcodeFind() {
 
 
 $(document).ready(function(){
-	
+	//table_insert_form
 	$('#table_confirm').on('click',function(){
 		alert('중복체크');
 	});
-	
+	//store_insert_form
 	$('#store_confirm').on('click',function(){
 		alert('중복체크');
 	});
@@ -49,18 +49,30 @@ $(document).ready(function(){
 	$('#ceo_confirm').on('click',function(){
 		alert('중복체크');
 	});
-	
+	//table_insert_form
 	$('#table_save_btn').on('click',function(){
 		alert('테이블계정저장');
 	});
-	
+	//store_insert_form
 	$('#store_save_btn').on('click',function(){
-		alert('매장관리자계정저장');
 	});
 	
 	$('#cancel_btn').on('click',function(){
 		$(location).attr('href',"loginForm");
 	});
+	//employee_insert_form image
+	$('#image').on('click',function(){
+		$('input[type=file]').click();
+		return false
+	});
+	
+	$('#photo').change(function(event){
+		var tmppath = URL.createObjectURL(event.target.files[0]);
+		$('#image').attr('src',tmppath);
+	});
+	
+	 $('#employeedatatable').DataTable({});
+	
 });
 
 $(document).ready(function(){
