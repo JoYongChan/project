@@ -27,24 +27,12 @@
         <div class="card-body">
           <form>
             <div class="form-group">
-              <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-                <label for="inputEmail">Email address</label>
-              </div>
+                <input type="text" id="inputEmail" class="form-control" placeholder="code" required="required" autofocus="autofocus">
             </div>
             <div class="form-group">
-              <div class="form-label-group">
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
-                <label for="inputPassword">Password</label>
-              </div>
             </div>
             <div class="form-group">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" value="remember-me">
-                  Remember Password
-                </label>
-              </div>
             </div>
             <a class="btn btn-primary btn-block" href="home">매장관리자 Login</a>
             <a class="btn btn-primary btn-block" href="home">테이블계정 Login</a>

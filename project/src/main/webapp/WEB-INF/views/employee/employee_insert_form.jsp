@@ -7,13 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form id="store_insert_form" name="store_insert_form" method="post" action="storeInsert" data-parsley-validate="true">
+	<form id="employee_insert_form" name="employee_insert_form" method="post" action="employeeInsert" data-parsley-validate="true">
 		<div class="container" style="margin-top: 30px">
 			<div class="row">
 				<div class="col-md-4"></div>
 				<div class="input-group mb-3 col-md-4 ">
 					<div class="input-group-prepend">
-						<span style="text-align: center; font-style: inherit; margin-bottom: 20px; font-size: 30px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp	관리자 계정 생성 </span>
+						<span style="text-align: center; font-style: inherit; margin-bottom: 20px; font-size: 30px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp	직원 등록 </span>
 					</div>
 				</div>
 				<div class="col-md-4"></div>
@@ -23,23 +23,11 @@
 				<div class="col-md-3"></div>
 				<div class="input-group mb-3 col-md-6 ">
 					<div class="input-group-prepend">
-						<span class="input-group-text" style="width: 120px"> StoreCode </span>
+						<span class="input-group-text" style="width: 120px"> 사원번호 </span>
 					</div>
-					<input type="text" id="storecode" name="storecode" class="form-control" placeholder="매장코드" 
-					 style="ime-mode: disabled" aria-describedby="basic-addon1" maxlength="4">
-					<button type="button" id="store_confirm" class="btn btn-primary" style="color: #000000">중복확인</button>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-3"></div>
-				<div class="input-group mb-3 col-md-6 ">
-					<div class="input-group-prepend">
-						<span class="input-group-text" style="width: 120px"> CeoCode </span>
-					</div>
-					<input type="text" id="ceocode" name="ceocode" class="form-control" placeholder="CEO코드" 
+					<input type="text" id="empcode" name="empcode" class="form-control" placeholder="사원번호" 
 					 style="ime-mode: disabled" aria-describedby="basic-addon1" maxlength="6">
-					<button type="button" id="ceo_confirm" class="btn btn-primary" style="color: #000000">중복확인</button>
+					<button type="button" id="employee_confirm" class="btn btn-primary" style="color: #000000">중복확인</button>
 				</div>
 			</div>
 
@@ -47,10 +35,21 @@
 				<div class="col-md-3"></div>
 				<div class="input-group mb-3 col-md-6 ">
 					<div class="input-group-prepend">
-						<span class="input-group-text" style="width: 120px"> StorePass </span>
+						<span class="input-group-text" style="width: 120px"> 이름 </span>
 					</div>
-					<input type="text" id="storepass" name="storepass" class="form-control" placeholder="storepassword"
-						style="ime-mode: disabled" aria-describedby="basic-addon1" maxlength="20">
+					<input type="text" id="name" name="name" class="form-control" placeholder="이름" 
+					 style="ime-mode: disabled" aria-describedby="basic-addon1" maxlength="20">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="input-group mb-3 col-md-6 ">
+					<div class="input-group-prepend">
+						<span class="input-group-text" style="width: 120px"> 나이 </span>
+					</div>
+					<input type="text" id="age" name="age" class="form-control" placeholder="" 
+					 style="ime-mode: disabled" aria-describedby="basic-addon1" maxlength="">
 				</div>
 			</div>
 			
@@ -58,21 +57,14 @@
 				<div class="col-md-3"></div>
 				<div class="input-group mb-3 col-md-6 ">
 					<div class="input-group-prepend">
-						<span class="input-group-text" style="width: 120px"> StoreName </span>
+						<span class="input-group-text" style="width: 120px"> 성별 </span>
 					</div>
-					<input type="text" id="storename" name="storename" class="form-control" placeholder="매장명"
-						style="ime-mode: disabled" aria-describedby="basic-addon1" maxlength="20">
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-3"></div>
-				<div class="input-group mb-3 col-md-6 ">
-					<div class="input-group-prepend">
-						<span class="input-group-text" style="width: 120px"> 사업자번호 </span>
+					<div class="input-group-prepend btn-group btn-group-toggle" data-toggle="buttons">
+        				 <label class="btn btn-secondary active">
+        				 	<input type="radio" name="gender" id="gender" value="남자" autocomplete="off" checked> 남자 </label>
+        				 <label class="btn btn-secondary">
+        				 	<input type="radio" name="gender" id="gender" value="여자" autocomplete="off"> 여자 </label>
 					</div>
-					<input type="text" id="busno" name="busno" class="form-control" placeholder="사업자번호"
-						style="ime-mode: disabled" aria-describedby="basic-addon1" maxlength="10">
 				</div>
 			</div>
 			
@@ -83,7 +75,7 @@
 						<span class="input-group-text" style="width: 120px"> 우편번호</span>
 					</div>
 					<input id="postno" name="postno" type="text" class="form-control" placeholder="PostNo" aria-label="Usernzipcode" aria-describedby="basic-addon1">
-					<button onclick="ZipcodestoreFind()" type="button" class="btn btn-primary" style="color: #000000">찾기</button>
+					<button onclick="ZipcodeemployeeFind()" type="button" class="btn btn-primary" style="color: #000000">찾기</button>
 				</div>
 			</div>
 			
@@ -116,27 +108,19 @@
 					<input id="detailaddr" name="detailaddr" type="text" class="form-control" placeholder="상세 주소" aria-label="Usernzipcode" aria-describedby="basic-addon1">
 				</div>
 			</div>
-
+			
 			<div class="row">
 				<div class="col-md-3"></div>
 				<div class="input-group mb-3 col-md-6 ">
 					<div class="input-group-prepend">
-						<span class="input-group-text" style="width: 120px"> 매장전화번호 </span>
+						<span class="input-group-text" style="width: 120px"> 전화번호 </span>
 					</div>
-					<input id="storephone" name="storephone" type="text" class="form-control" placeholder="매장 전화번호" aria-label="Usernzipcode" aria-describedby="basic-addon1">
+					<input id="phone" name="phone" type="text" class="form-control" placeholder="ex)01012345678" aria-label="Usernzipcode" aria-describedby="basic-addon1">
 				</div>
 			</div>
-
-			<div class="row" style="margin-bottom: 100px; margin-top: 20px">
-				<div class="col-md-5"></div>
-				<div class="col-md-4">
-					<button id="store_save_btn" name="store_save_btn" type="submit"	class="btn btn-success save" style="color: #000000">저 장</button>
-					<button id="cancel_btn" name="cancel_btn" type="button"	class="btn btn-danger save" style="margin-left: 10px; color: #000000">취 소</button>
-				</div>
-				<div class="col-md-3"></div>
-			</div>
-
+			
 		</div>
 	</form>
+
 </body>
 </html>
