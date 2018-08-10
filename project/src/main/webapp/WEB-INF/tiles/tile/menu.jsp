@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -80,9 +81,34 @@
 					<i class="fas fa-fw fa-folder"></i> <span>직원관리</span>
 					</a>
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-					<a class="dropdown-item" href="employeeInsertForm">직원 등록</a> 
-					<a class="dropdown-item" href="employeeListForm">직원 리스트</a>
-					<a class="dropdown-item" href="employeeSalaryForm">직원 급여</a>
+				<c:choose>
+					<c:when test="${sessionstorecode ==null}">
+						<label>관리자계정 로그인시 확인 가능합니다.</label>
+					</c:when>
+					<c:otherwise>
+						<a class="dropdown-item" href="employeeInsertForm">직원 등록</a> 
+						<a class="dropdown-item" href="employeeListForm">직원 리스트</a>
+						<a class="dropdown-item" href="employeeSalaryForm">직원 급여</a>
+					</c:otherwise>
+				</c:choose>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle"	href="#" id="pagesDropdown" 
+					role="button" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false"> 
+					<i class="fas fa-fw fa-folder"></i> <span>매장관리</span>
+					</a>
+				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
+				<c:choose>
+					<c:when test="${sessionstorecode ==null}">
+						<label>관리자계정 로그인시 확인 가능합니다.</label>
+					</c:when>
+					<c:otherwise>
+						<a class="dropdown-item" href="tableAccount">테이블계정 등록</a> 
+						<a class="dropdown-item" href="tableListForm">테이블계정 리스트</a> 
+						<a class="dropdown-item" href="storeListForm">매장 리스트</a> 
+					</c:otherwise>
+				</c:choose>
 				</div>
 			</li>
 	</ul>

@@ -47,7 +47,7 @@ public class GuestController {
 //			member.setPassword(encodingPassowrd);
 //			int result = dao.insertRow(member);
 //			if (result > 0) {
-//				model.addAttribute("msg", "°¡ÀÔ ¼º°ø ÇÏ¿´½À´Ï´Ù");
+//				model.addAttribute("msg", "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
 //			}
 //			System.out.println("success" + result);
 //		} catch (Exception e) {
@@ -157,7 +157,7 @@ public class GuestController {
 //		MemberDao dao = sqlSession.getMapper(MemberDao.class);
 //		int result = dao.deleteRow(email);
 //		if (result > 0) {
-//			model.addAttribute("msg", "»èÁ¦ µÇ¾ú½À´Ï´Ù");
+//			model.addAttribute("msg", "ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
 //		}
 //		System.out.println("------>>>>" + result);
 //		return "member/member_result";

@@ -8,9 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
-<title>SB Admin - Login</title>
-
+<title>Insert title here</title>
 <!-- Bootstrap core CSS-->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom fonts for this template-->
@@ -18,40 +16,23 @@
 	type="text/css">
 <!-- Custom styles for this template-->
 <link href="css/sb-admin.css" rel="stylesheet">
-<style>
-body{ 
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-.bgimg {
-    border: 0;
-    padding: 0; 
-    background-image: url('resources/img/restaurant.jpg');
-    min-height: 100%;
-    background-position: center;
-    background-size: cover;
-}
-</style>
-<title>Insert title here</title>
 </head>
-<body class="bgimg">
+<body background="resources/img/background.jpg" >
 <form  id="login_form" name="login_form" method="post" action="login" data-parsley-validate="true">
 	<div class="container">
       <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Login</div>
+        <div class="card-header" style="color: red;">Login Fail</div>
         <div class="card-body">
           <form>
             <div class="form-group">
                 <input type="text" id="code" name="storecode" class="form-control" placeholder="code" required="required" autofocus="autofocus">
             </div>
             <div class="form-group">
-                <input type="password" id="password" name="storepass" class="form-control" placeholder="Password" required="required">
+                <input type="password" id="password" name="storepass"  class="form-control" placeholder="Password" required="required">
             </div>
             <div class="form-group">
             </div>
-            <button  id="login_btn" name="login_btn"  type="submit" class="btn btn-primary save" style="width: 360px"> 매장 관리자 Login </button>
-<!--             <button  id="login_btn" name="login_btn"  type="submit" class="btn btn-primary save" style="width: 350px"> 테이블 계정 Login </button> -->
+            <button  id="login_btn" name="login_btn"  type="submit" class="btn btn-primary save" style="width: 350px"> Login </button>
             <a class="btn btn-primary btn-block" href="home">테이블계정 Login</a>
           </form>
           <div class="text-center">

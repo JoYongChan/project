@@ -37,28 +37,21 @@ function ZipcodeFind() {
 
 
 $(document).ready(function(){
-	//table_insert_form
-	$('#table_confirm').on('click',function(){
-		alert('중복체크');
+	$('#storecode').keyup(function () { 
+	    this.value = this.value.replace(/[^0-9]/g,'');
 	});
-	//store_insert_form
-	$('#store_confirm').on('click',function(){
-		alert('중복체크');
+	$('#ceocode').keyup(function () { 
+		this.value = this.value.replace(/[^0-9]/g,'');
 	});
-	
-	$('#ceo_confirm').on('click',function(){
-		alert('중복체크');
+	$('#busno').keyup(function () { 
+		this.value = this.value.replace(/[^0-9]/g,'');
 	});
-	//table_insert_form
-	$('#table_save_btn').on('click',function(){
-		alert('테이블계정저장');
-	});
-	//store_insert_form
-	$('#store_save_btn').on('click',function(){
+	$('#storephone').keyup(function () { 
+		this.value = this.value.replace(/[^0-9]/g,'');
 	});
 	
 	$('#cancel_btn').on('click',function(){
-		$(location).attr('href',"loginForm");
+		$(location).attr('href',"home");
 	});
 	//employee_insert_form image
 	$('#image').on('click',function(){
@@ -72,14 +65,169 @@ $(document).ready(function(){
 	});
 	
 	 $('#employeedatatable').DataTable({});
+	 $('#storedatatable').DataTable({});
+	 $('#tabledatatable').DataTable({});
+	 
+	//store_insert_form
+	 $('#store_confirm').on('click',function(){ 
+			var storecode = $('#storecode').val();
+			if(storecode==""){
+				$('#confirmModal').modal('show');
+				$('#confirm-modal-body').text('매장번호를 입력하세요.');
+				$('#confirm_modal_btn1').text("확인");
+				$('#confirm_modal_btn2').hide();
+				return;
+			}else{
+				$.ajax({
+					type : 'POST',
+					data : "storecode="+storecode,
+					url : 'storecodeConfirm',
+					success : function(data){
+						if(data == 0){
+							$('#confirmModal').modal('show');
+							$('#confirm-modal-body').text('사용가능한 매장번호입니다.');
+							$('#confirm_modal_btn1').on('click',function(){
+								$('#storeconfirm_yn').val("y");
+							});
+						}else{
+							$('#confirmModal').modal('show');
+							$('#confirm-modal-body').text('중복된 매장번호입니다.\n다시 입력해주세요.');
+							$('#confirm_modal_btn1').text("확인");
+							$('#confirm_modal_btn2').hide();
+						}
+						
+					},
+					error : function(xhr, status, error){
+						alert('ajax error');
+					}
+				});
+			}
+		});
+	 
+	 $('#ceo_confirm').on('click',function(){
+		 var ceocode = $('#ceocode').val();
+		 if(ceocode==""){
+			 $('#confirmModal').modal('show');
+			 $('#confirm-modal-body').text('관리자코드를 입력하세요.');
+			 $('#confirm_modal_btn1').text("확인");
+			 $('#confirm_modal_btn2').hide();
+			 return;
+		 }else{
+			 $.ajax({
+				 type : 'POST',
+				 data : "ceocode="+ceocode,
+				 url : 'ceocodeConfirm',
+				 success : function(data){
+					 if(data == 0){
+						 $('#confirmModal').modal('show');
+						 $('#confirm-modal-body').text('사용가능한 코드입니다.');
+						 $('#confirm_modal_btn1').on('click',function(){
+							 $('#ceoconfirm_yn').val("y");
+						 });
+					 }else{
+						 $('#confirmModal').modal('show');
+						 $('#confirm-modal-body').text('중복된 코드입니다.\n다시 입력해주세요.');
+						 $('#confirm_modal_btn1').text("확인");
+						 $('#confirm_modal_btn2').hide();
+					 }
+					 
+				 },
+				 error : function(xhr, status, error){
+					 alert('ajax error');
+				 }
+			 });
+		 }
+	 });
+	 
+	//store_insert_form
+	$('#store_save_btn').on('click',function(){
+		if($('#storeconfirm_yn').val() == "n"){
+			 $('#confirmModal').modal('show');
+			 $('#confirm-modal-body').text('매장번호를 중복체크 하세요.');
+			 $('#confirm_modal_btn1').text("확인");
+			 $('#confirm_modal_btn2').hide();
+			return;
+		}
+		if($('#ceoconfirm_yn').val() == "n"){
+			 $('#confirmModal').modal('show');
+			 $('#confirm-modal-body').text('관리자코드를 중복체크 하세요.');
+			 $('#confirm_modal_btn1').text("확인");
+			 $('#confirm_modal_btn2').hide();
+			return;
+		}
+		$('#store_insert_form').submit();
+	});
+	
+	$('#store_delete_btn').on('click',function(){
+		$('#confirmModal').modal('show');
+		$('#confirm-modal-body').text('정말 삭제 하시겠습니까?');
+		$('#confirm_modal_btn1').text("삭제");
+		$('#confirm_modal_btn2').text("취소");
+		$('#confirm_modal_btn1').on('click',function(){
+			var url = "storeDelete?storecode="+$('#storecode').val();
+			$(location).attr('href',url);
+		});
+	});
+	
+	//tableaccount
+	$('#table_confirm').on('click',function(){
+		 var tablecode = $('#tablecode').val();
+		 if(tablecode==""){
+			 $('#confirmModal').modal('show');
+			 $('#confirm-modal-body').text('테이블코드를 입력하세요.');
+			 $('#confirm_modal_btn1').text("확인");
+			 $('#confirm_modal_btn2').hide();
+			 return;
+		 }else{
+			 $.ajax({
+				 type : 'POST',
+				 data : "tablecode="+tablecode,
+				 url : 'tablecodeConfirm',
+				 success : function(data){
+					 if(data == 0){
+						 $('#confirmModal').modal('show');
+						 $('#confirm-modal-body').text('사용가능한 테이블코드입니다.');
+						 $('#confirm_modal_btn1').on('click',function(){
+							 $('#tableconfirm_yn').val("y");
+						 });
+					 }else{
+						 $('#confirmModal').modal('show');
+						 $('#confirm-modal-body').text('중복된 테이블코드입니다.\n다시 입력해주세요.');
+						 $('#confirm_modal_btn1').text("확인");
+						 $('#confirm_modal_btn2').hide();
+					 }
+					 
+				 },
+				 error : function(xhr, status, error){
+					 alert('ajax error');
+				 }
+			 });
+		 }
+	 });
+	
+	
+	$('#table_save_btn').on('click',function(){
+		if($('#tableconfirm_yn').val() == "n"){
+			 $('#confirmModal').modal('show');
+			 $('#confirm-modal-body').text('테이블코드를 중복체크 하세요.');
+			 $('#confirm_modal_btn1').text("확인");
+			 $('#confirm_modal_btn2').hide();
+			return;
+		}
+		$('#table_insert_form').submit();
+	});
+	
+	$('#table_delete_btn').on('click',function(){
+		$('#confirmModal').modal('show');
+		$('#confirm-modal-body').text('정말 삭제 하시겠습니까?');
+		$('#confirm_modal_btn1').text("삭제");
+		$('#confirm_modal_btn2').text("취소");
+		$('#confirm_modal_btn1').on('click',function(){
+			var url = "tableDelete?tablecode="+$('#tablecode').val();
+			$(location).attr('href',url);
+		});
+	});
 	
 });
 
-$(document).ready(function(){
-	
-	$('#logout1').on('click',function(){
-	});
-	//<!-- Bootstrap - DataTables -->
-	$('#example').DataTable();
-});
 	
