@@ -83,7 +83,8 @@
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
 				<c:choose>
 					<c:when test="${sessionstorecode ==null}">
-						<label>관리자계정 로그인시 확인 가능합니다.</label>
+						<label>&nbsp관리자계정 로그인 시 </label>
+						<label>&nbsp확인 가능합니다.</label>
 					</c:when>
 					<c:otherwise>
 						<a class="dropdown-item" href="employeeInsertForm">직원 등록</a> 
@@ -101,7 +102,8 @@
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
 				<c:choose>
 					<c:when test="${sessionstorecode ==null}">
-						<label>관리자계정 로그인시 확인 가능합니다.</label>
+						<label>&nbsp관리자계정 로그인 시 </label>
+						<label>&nbsp확인 가능합니다.</label>
 					</c:when>
 					<c:otherwise>
 						<a class="dropdown-item" href="tableAccount">테이블계정 등록</a> 

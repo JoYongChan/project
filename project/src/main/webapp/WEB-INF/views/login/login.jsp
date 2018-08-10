@@ -27,7 +27,7 @@ body{
 .bgimg {
     border: 0;
     padding: 0; 
-    background-image: url('resources/img/restaurant.jpg');
+    background-image: url('resources/img/restaurant1.jpg');
     min-height: 100%;
     background-position: center;
     background-size: cover;
