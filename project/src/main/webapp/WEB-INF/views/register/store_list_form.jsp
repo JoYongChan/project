@@ -9,7 +9,7 @@
 </head>
 <body>
 	<form id="store_list_form" name="store_list_form" method="get" action="storeListForm">
-		<div class="container" style="margin-top: 100px">
+		<div class="container" style="margin-top: 30px">
 			<div class="row">
 				<div class="col-md-4"></div>
 				<div class="input-group mb-3 col-md-4 ">

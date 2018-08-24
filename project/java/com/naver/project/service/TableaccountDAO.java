@@ -11,4 +11,5 @@ public interface TableaccountDAO {
 	Tableaccount selectOne(String tablecode);
 	int updateRow(Tableaccount tableaccount);
 	int deleteRow(String tablecode);
+	Tableaccount tableLogin(Tableaccount tableaccount);
 }

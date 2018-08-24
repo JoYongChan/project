@@ -39,4 +39,8 @@
   		delete from tableaccount where tablecode=#{tablecode}
   	</delete>
   	
+  	<select id="tableLogin" parameterType="hashMap" resultMap="tableaccountMap">
+  		select * from tableaccount where tablecode=#{tablecode} and tablepass=#{tablepass}	
+  	</select>
+  	
  </mapper>

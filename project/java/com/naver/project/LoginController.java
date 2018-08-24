@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.naver.project.entities.Employee;
 import com.naver.project.entities.Storemanagement;
 import com.naver.project.entities.Tableaccount;
+import com.naver.project.service.EmployeeDAO;
 import com.naver.project.service.StoremanagementDAO;
 import com.naver.project.service.TableaccountDAO;
 
@@ -28,6 +30,8 @@ public class LoginController {
 	private Storemanagement storemanagement;
 	@Autowired
 	private Tableaccount tableaccount;
+	@Autowired
+	private Employee employee;
 	
 	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
 	public String loginForm(Model model) {
@@ -35,13 +39,14 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@ModelAttribute Storemanagement storemanagement,HttpSession session) {
+	public String login(@ModelAttribute Storemanagement storemanagement,HttpSession session,Model model) {
 		StoremanagementDAO dao = sqlSessoin.getMapper(StoremanagementDAO.class);
 		Storemanagement data = dao.login(storemanagement);
-		
 		if(data == null) {
 			return "login/login_fail";
 		}else {
+			ArrayList<Storemanagement> storemanagements = dao.selectAll();
+			model.addAttribute("Storemanagement",storemanagement);
 			//세션 선언
 			session.setAttribute("sessionstorecode", data.getStorecode());
 			session.setAttribute("sessionstorepass", data.getStorepass());
@@ -50,18 +55,29 @@ public class LoginController {
 			return "home";
 		}
 		
-		
-		
 	}
 	//로그아웃
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)	
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:loginForm";
+		return "redirect:home";
+	}
+	
+	
+	
+	@RequestMapping(value = "/storeSelected", method = RequestMethod.POST)	
+	@ResponseBody
+	public Employee storeSelected(@RequestParam String empcode) {
+		EmployeeDAO dao = sqlSessoin.getMapper(EmployeeDAO.class);
+		employee = dao.selectOne(empcode);
+		return employee;
 	}
 
 	@RequestMapping(value = "/storeAdmin", method = RequestMethod.GET)
 	public String storeAdmin(Model model) {
+		EmployeeDAO dao = sqlSessoin.getMapper(EmployeeDAO.class);
+		ArrayList<Employee> employee = dao.selectAll();
+		model.addAttribute("employee",employee);
 		return "register/store_insert_form";
 	}
 	
@@ -74,17 +90,6 @@ public class LoginController {
 		
 		return exist;
 	}
-	
-	@RequestMapping(value = "/ceocodeConfirm", method = RequestMethod.POST)
-	@ResponseBody
-	public int ceocodeConfirm(@RequestParam String ceocode) {
-		StoremanagementDAO dao = sqlSessoin.getMapper(StoremanagementDAO.class);
-		int exist =0;
-		exist= dao.selectCeoConfirm(ceocode);
-		
-		return exist;
-	}
-	
 	
 	@RequestMapping(value = "/storeInsert", method = RequestMethod.POST)
 	public String storeInsert(Model model,@ModelAttribute Storemanagement storemanagement) {

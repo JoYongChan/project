@@ -10,4 +10,7 @@
 		<property name="order" value="2"></property>
 	
 	</bean>
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"></property>
+	</bean>
 </beans>

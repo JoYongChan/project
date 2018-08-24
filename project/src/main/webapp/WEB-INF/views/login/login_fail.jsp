@@ -16,8 +16,23 @@
 	type="text/css">
 <!-- Custom styles for this template-->
 <link href="css/sb-admin.css" rel="stylesheet">
+<style>
+body{ 
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.bgimg {
+    border: 0;
+    padding: 0; 
+    background-image: url('resources/img/restaurant5.jpg');
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+</style>
 </head>
-<body background="resources/img/background.jpg" >
+<body class="bgimg" >
 <form  id="login_form" name="login_form" method="post" action="login" data-parsley-validate="true">
 	<div class="container">
       <div class="card card-login mx-auto mt-5">
@@ -32,8 +47,7 @@
             </div>
             <div class="form-group">
             </div>
-            <button  id="login_btn" name="login_btn"  type="submit" class="btn btn-primary save" style="width: 350px"> Login </button>
-            <a class="btn btn-primary btn-block" href="home">테이블계정 Login</a>
+            <button  id="login_btn" name="login_btn"  type="submit" class="btn btn-primary save" style="width: 360px"> Admin Login </button>
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="storeAdmin">매장 관리자 계정 생성</a>

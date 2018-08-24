@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -37,11 +38,15 @@
 				<div class="col-md-3"></div>
 				<div class="input-group mb-3 col-md-6 ">
 					<div class="input-group-prepend">
-						<span class="input-group-text" style="width: 120px"> CeoCode </span>
+						<span class="input-group-text" style="width: 120px"> Ceoname </span>
 					</div>
-					<input type="text" id="ceocode" name="ceocode" class="form-control" placeholder="CEO코드" 
-					 style="ime-mode: disabled" aria-describedby="basic-addon1" maxlength="6">
-					<button type="button" id="ceo_confirm" class="btn btn-primary" style="color: #000000">중복확인</button>
+					<select id="selectstore" name="ceocode" style="width: 410px">
+						<c:forEach var="employee" items="${employee}">
+							<c:if test="${employee.memlevel =='0'}">
+								<option value="${employee.empcode}" >${employee.name}</option>
+							</c:if>
+						</c:forEach> 
+					</select>
 				</div>
 			</div>
 

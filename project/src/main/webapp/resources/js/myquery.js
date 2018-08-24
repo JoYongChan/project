@@ -49,6 +49,12 @@ $(document).ready(function(){
 	$('#storephone').keyup(function () { 
 		this.value = this.value.replace(/[^0-9]/g,'');
 	});
+	$('#phone').keyup(function () { 
+		this.value = this.value.replace(/[^0-9]/g,'');
+	});
+	$('#age').keyup(function () { 
+		this.value = this.value.replace(/[^0-9]/g,'');
+	});
 	
 	$('#cancel_btn').on('click',function(){
 		$(location).attr('href',"home");
@@ -67,6 +73,24 @@ $(document).ready(function(){
 	 $('#employeedatatable').DataTable({});
 	 $('#storedatatable').DataTable({});
 	 $('#tabledatatable').DataTable({});
+	 $('#employeesalarydatatable').DataTable({}); 
+	 $('#employeecommutedatatable').DataTable({}); 
+	 
+	 $('#selectstore').on('change',function () { 
+			var storename = $(this).children('option:selected').text();
+			var empcode = $(this).val();
+			$.ajax({
+				type : 'POST',
+				data : "empcode="+empcode,
+				url : 'storeSelected',
+				success : function(data){
+					$('#storename').attr('value',data.storename);
+				},
+				error : function(xhr, status, error){
+					alert('ajax error'+error);
+				}
+			});
+		});
 	 
 	//store_insert_form
 	 $('#store_confirm').on('click',function(){ 
@@ -104,53 +128,11 @@ $(document).ready(function(){
 			}
 		});
 	 
-	 $('#ceo_confirm').on('click',function(){
-		 var ceocode = $('#ceocode').val();
-		 if(ceocode==""){
-			 $('#confirmModal').modal('show');
-			 $('#confirm-modal-body').text('관리자코드를 입력하세요.');
-			 $('#confirm_modal_btn1').text("확인");
-			 $('#confirm_modal_btn2').hide();
-			 return;
-		 }else{
-			 $.ajax({
-				 type : 'POST',
-				 data : "ceocode="+ceocode,
-				 url : 'ceocodeConfirm',
-				 success : function(data){
-					 if(data == 0){
-						 $('#confirmModal').modal('show');
-						 $('#confirm-modal-body').text('사용가능한 코드입니다.');
-						 $('#confirm_modal_btn1').on('click',function(){
-							 $('#ceoconfirm_yn').val("y");
-						 });
-					 }else{
-						 $('#confirmModal').modal('show');
-						 $('#confirm-modal-body').text('중복된 코드입니다.\n다시 입력해주세요.');
-						 $('#confirm_modal_btn1').text("확인");
-						 $('#confirm_modal_btn2').hide();
-					 }
-					 
-				 },
-				 error : function(xhr, status, error){
-					 alert('ajax error');
-				 }
-			 });
-		 }
-	 });
-	 
 	//store_insert_form
 	$('#store_save_btn').on('click',function(){
 		if($('#storeconfirm_yn').val() == "n"){
 			 $('#confirmModal').modal('show');
 			 $('#confirm-modal-body').text('매장번호를 중복체크 하세요.');
-			 $('#confirm_modal_btn1').text("확인");
-			 $('#confirm_modal_btn2').hide();
-			return;
-		}
-		if($('#ceoconfirm_yn').val() == "n"){
-			 $('#confirmModal').modal('show');
-			 $('#confirm-modal-body').text('관리자코드를 중복체크 하세요.');
 			 $('#confirm_modal_btn1').text("확인");
 			 $('#confirm_modal_btn2').hide();
 			return;
@@ -225,6 +207,111 @@ $(document).ready(function(){
 		$('#confirm_modal_btn1').on('click',function(){
 			var url = "tableDelete?tablecode="+$('#tablecode').val();
 			$(location).attr('href',url);
+		});
+	});
+	
+	//employee_insert_form
+	//employee_confirm
+	 $('#employee_confirm').on('click',function(){ 
+			var empcode = $('#empcode').val();
+			if(empcode==""){
+				$('#confirmModal').modal('show');
+				$('#confirm-modal-body').text('사원번호를 입력하세요.');
+				$('#confirm_modal_btn1').text("확인");
+				$('#confirm_modal_btn2').hide();
+				return;
+			}else{
+				$.ajax({
+					type : 'POST',
+					data : "empcode="+empcode,
+					url : 'empcodeConfirm',
+					success : function(data){
+						if(data == 0){
+							$('#confirmModal').modal('show');
+							$('#confirm-modal-body').text('사용가능한 사원번호입니다.');
+							$('#confirm_modal_btn1').on('click',function(){
+								$('#employeeconfirm_yn').val("y");
+							});
+						}else{
+							$('#confirmModal').modal('show');
+							$('#confirm-modal-body').text('중복된 사원번호입니다.\n다시 입력해주세요.');
+							$('#confirm_modal_btn1').text("확인");
+							$('#confirm_modal_btn2').hide();
+						}
+						
+					},
+					error : function(xhr, status, error){
+						alert('ajax error');
+					}
+				});
+			}
+		});
+	 
+	$('#employee_save_btn').on('click',function(){
+		if($('#employeeconfirm_yn').val() == "n"){
+			 $('#confirmModal').modal('show');
+			 $('#confirm-modal-body').text('사원번호를 중복체크 하세요.');
+			 $('#confirm_modal_btn1').text("확인");
+			 $('#confirm_modal_btn2').hide();
+			return;
+		}
+		$('#employee_insert_form').submit();
+	});
+	
+	$('#employee_delete_btn').on('click',function(){
+			$('#confirmModal').modal('show');
+			$('#confirm-modal-body').text('사원정보를 삭제하시겠습니까?');
+			$('#confirm_modal_btn1').text("확인");
+			$('#confirm_modal_btn2').text("취소");
+			$('#confirm_modal_btn1').on('click',function(){
+				var url = "employeeDelete?empcode="+$('#empcode').val();
+				$(location).attr('href',url);
+			});
+	});
+	
+	$('#selectemployee').on('change',function () { 
+		var name = $(this).children('option:selected').text();
+		var empcode = $(this).val();
+		$.ajax({
+			type : 'POST',
+			data : "empcode="+empcode,
+			url : 'employeeSelected',
+			success : function(data){
+				$('#name').attr('value',data.name);
+				$('#gender').attr('value',data.gender);
+				$('#age').attr('value',data.age);
+				$('#hiredate').attr('value',data.hiredate);
+			},
+			error : function(xhr, status, error){
+				alert('ajax error'+error);
+			}
+		});
+	});
+	
+	$('#employee_salary_save_btn').on('click',function(){
+		$('#employee_salary_form').submit();
+	});
+	
+	$('#employee_salary_delete_btn').on('click',function(){
+		$('#confirmModal').modal('show');
+		$('#confirm-modal-body').text('사원 급여를 삭제 하시겠습니까?');
+		$('#confirm_modal_btn1').text("삭제");
+		$('#confirm_modal_btn2').text("취소");
+		$('#confirm_modal_btn1').on('click',function(){
+			var url = "employeeSalaryDelete?empcode="+$('#empcode').val();
+			$(location).attr('href',url);
+		});
+	});
+	
+	$('#employee_commute_delete_btn').on('click',function(){
+		var empcode =$('#empcode').val();
+		var commutedate=$('#commutedate').val();
+		$('#confirmModal').modal('show');
+		$('#confirm-modal-body').text('사원 근태를 삭제 하시겠습니까?');
+		$('#confirm_modal_btn1').text("삭제");
+		$('#confirm_modal_btn2').text("취소");
+		$('#confirm_modal_btn1').on('click',function(){
+			location.href="employeeCommuteDelete?empcode="+empcode+"&commutedate="+commutedate;
 		});
 	});
 	

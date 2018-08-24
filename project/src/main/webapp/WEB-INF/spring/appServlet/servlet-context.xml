@@ -40,6 +40,11 @@
 		        <beans:constructor-arg index="0" ref="sqlSessionFactory">
 		        </beans:constructor-arg>
 		    </beans:bean>
+		
+		<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+			<beans:property name="maxUploadSize" value="5242880"></beans:property>		
+		</beans:bean>
+
 
 	<!-- tiles -->
 	<beans:bean id="tilesviewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>

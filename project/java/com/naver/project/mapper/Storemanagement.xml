@@ -22,10 +22,6 @@
    		select count(*) from storemanagement where storecode=#{storecode}
 	</select>
 	
-	<select id="selectCeoConfirm" parameterType="String" resultType="int">
-   		select count(*) from storemanagement where ceocode=#{ceocode}
-	</select>
-	
 	<select id="selectAll" resultMap="storemanagementMap">
   		select * from storemanagement
   	</select>

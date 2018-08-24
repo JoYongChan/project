@@ -8,9 +8,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
-<title>SB Admin - Login</title>
-
 <!-- Bootstrap core CSS-->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom fonts for this template-->
@@ -36,25 +33,22 @@ body{
 <title>Insert title here</title>
 </head>
 <body class="bgimg">
-<form  id="login_form" name="login_form" method="post" action="login" data-parsley-validate="true">
+<form  id="table_login_form" name="table_login_form" method="post" action="tableLogin" data-parsley-validate="true">
 	<div class="container">
       <div class="card card-login mx-auto mt-5">
         <div class="card-header">Login</div>
         <div class="card-body">
           <form>
             <div class="form-group">
-                <input type="text" id="code" name="storecode" class="form-control" placeholder="code" required="required" autofocus="autofocus">
+                <input type="text" id="tablecode" name="tablecode" class="form-control" placeholder="code" required="required" autofocus="autofocus">
             </div>
             <div class="form-group">
-                <input type="password" id="password" name="storepass" class="form-control" placeholder="Password" required="required">
+                <input type="password" id="tablepass" name="tablepass" class="form-control" placeholder="Password" required="required">
             </div>
             <div class="form-group">
             </div>
-            <button  id="login_btn" name="login_btn"  type="submit" class="btn btn-primary save" style="width: 360px"> Admin Login </button>
+              <button  id="table_login_btn" name="table_login_btn"  type="submit" class="btn btn-primary save" style="width: 350px"> Table Account Login </button>
           </form>
-          <div class="text-center">
-            <a class="d-block small mt-3" href="storeAdmin">매장 관리자 계정 생성</a>
-          </div>
         </div>
       </div>
     </div>
