@@ -83,7 +83,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text" style="width: 120px"> 성별 </span>
 					</div>
-					<select id="gender" name="gender" style="width: 420px">
+					<select id="gender" name="gender" style="width: 250px">
 						<option value="남자">남자</option>
 						<option value="여자">여자</option>
 					</select>
@@ -158,7 +158,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text" style="width: 120px"> 직급 </span>
 					</div>
-					<select id="memlevel" name="memlevel" style="width: 420px">
+					<select id="memlevel" name="memlevel" style="width: 250px">
 						<option value="0">사장</option>
 						<option value="1">매니저</option>
 						<option value="2">직원</option>
@@ -172,7 +172,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text" style="width: 120px"> 지점 </span>
 					</div>
-					<select id="storename" name="storename" style="width: 420px">
+					<select id="storename" name="storename" style="width: 250px">
 						<c:forEach var="storemanagements" items="${storemanagements}">
 								<option value="${storemanagements.storename}" >${storemanagements.storename}</option>
 						</c:forEach> 

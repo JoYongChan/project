@@ -281,6 +281,9 @@ $(document).ready(function(){
 				$('#gender').attr('value',data.gender);
 				$('#age').attr('value',data.age);
 				$('#hiredate').attr('value',data.hiredate);
+				$('#memlevel').attr('value',data.memlevel);
+				$('#attendancetype').attr('value',data.attendancetype);
+				$('#leaveworktype').attr('value',data.leaveworktype);
 			},
 			error : function(xhr, status, error){
 				alert('ajax error'+error);
@@ -305,7 +308,7 @@ $(document).ready(function(){
 	
 	$('#employee_commute_delete_btn').on('click',function(){
 		var empcode =$('#empcode').val();
-		var commutedate=$('#commutedate').val();
+		var commutedate =$('#commutedate').val();
 		$('#confirmModal').modal('show');
 		$('#confirm-modal-body').text('사원 근태를 삭제 하시겠습니까?');
 		$('#confirm_modal_btn1').text("삭제");

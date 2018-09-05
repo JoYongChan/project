@@ -21,38 +21,46 @@
       </form>
 
 	<c:choose>
-		<c:when test="${sessionstorecode eq null && sessiontablecode eq null }">
+		<c:when
+			test="${sessionstorecode eq null && sessiontablecode eq null }">
 			<ul class="navbar-nav ml-auto ml-md-0">
-				<li class="nav-item dropdown no-arrow"><a	class="nav-link dropdown-toggle" href="loginForm" id="userDropdown"
-					role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-						<a class="dropdown-item" href="loginForm">관리자 로그인</a>
-						<a class="dropdown-item" href="TableloginForm">테이블계정 로그인</a>
-					</div>
-				</li>
+				<li class="nav-item dropdown no-arrow"><a
+					class="nav-link dropdown-toggle" href="loginForm" id="userDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">Login</a>
+					<div class="dropdown-menu dropdown-menu-right"
+						aria-labelledby="userDropdown">
+						<a class="dropdown-item" href="loginForm">관리자 로그인</a> <a
+							class="dropdown-item" href="TableloginForm">테이블계정 로그인</a>
+					</div></li>
 			</ul>
 		</c:when>
 		<c:otherwise>
 			<!-- Navbar -->
 			<ul class="navbar-nav ml-auto ml-md-0">
-				<li class="nav-item dropdown no-arrow"><a	class="nav-link dropdown-toggle" href="#" id="userDropdown"
-					role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;"> <i	class="fas fa-user-circle fa-fw"></i>
-					 ${sessionstorename} ${sessiontablecode}
+				<li class="nav-item dropdown no-arrow"><a
+					class="nav-link dropdown-toggle" href="#" id="userDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false" style="color: white;"> <i
+						class="fas fa-user-circle fa-fw"></i> ${sessionstorename}
+						${sessiontablecode}
 				</a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-						<a class="dropdown-item" href="boardListForm">게시판</a>
-						<a class="dropdown-item" href="#">Activity Log</a>
+					<div class="dropdown-menu dropdown-menu-right"
+						aria-labelledby="userDropdown">
+						<a class="dropdown-item" href="boardListForm">게시판</a> <a
+							class="dropdown-item" href="#">Activity Log</a>
 						<div class="dropdown-divider"></div>
 						<c:choose>
 							<c:when test="${sessionstorecode == storemanagement.storecode}">
-								<a class="dropdown-item" href="logout" data-toggle="modal"	data-target="#logoutModal">로그아웃</a>								
+								<a class="dropdown-item" href="logout" data-toggle="modal"
+									data-target="#logoutModal">로그아웃</a>
 							</c:when>
-							<c:when test="${sessiontablecode == tableaccount.tablecode}"> 
-								<a class="dropdown-item" href="tablelogout" data-toggle="modal"	data-target="#logoutModal">테이블계정 로그아웃</a>							
+							<c:when test="${sessiontablecode == tableaccount.tablecode}">
+								<a class="dropdown-item" href="tablelogout" data-toggle="modal"
+									data-target="#logoutModal">로그아웃</a>
 							</c:when>
 						</c:choose>
-					</div>
-				</li>
+					</div></li>
 			</ul>
 		</c:otherwise>
 	</c:choose>

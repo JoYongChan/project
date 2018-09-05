@@ -27,7 +27,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text" style="width: 120px"> 사원번호 </span>
 					</div>
-					<select id="selectemployee" name="empcode" style="width: 420px">
+					<select id="selectemployee" name="empcode" style="width: 410px">
 						<c:forEach var="employee" items="${employee}">
 							<option value="${employee.empcode}" >${employee.empcode}</option>
 						</c:forEach> 
@@ -81,6 +81,17 @@
 			</div>
 			
 			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="input-group mb-3 col-md-6 ">
+					<div class="input-group-prepend">
+						<span class="input-group-text" style="width: 120px"> 직급</span>
+					</div>
+					<input id="memlevel" name="memlevel" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+			
+			<div class="row">
 				<div class="col-md-12" style="text-align: center">
 					<label style="background-color: gray; color: black;width: 550px">소득 내역</label>
 				</div>
@@ -92,10 +103,10 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text" style="width: 120px"> 기본급 </span>
 					</div>
-					<input id="pay" name="pay" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1"	>
+					<input id="pay" name="pay" type="text" class="form-control" placeholder="" value="0" aria-label="Username" aria-describedby="basic-addon1"	>
 					
 						<span class="input-group-text" style="width: 120px"> 급여 </span>
-						<input id="extra" name="extra" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1"	>
+						<input id="extra" name="extra" type="text" class="form-control" placeholder="" value="0" aria-label="Username" aria-describedby="basic-addon1"	>
 				</div>
 			</div>
 			

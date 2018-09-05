@@ -28,7 +28,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text" style="width: 120px"> 사원번호 </span>
 					</div>
-					<select id="empcode" name="empcode" style="width: 420px">
+					<select id="selectcommute" name="empcode" style="width: 420px">
 						<c:forEach var="commuteemployee" items="${commuteemployee}">
 							<option value="${commuteemployee.empcode}" >${commuteemployee.empcode} &nbsp-&nbsp ${commuteemployee.name}</option>
 						</c:forEach> 

@@ -82,6 +82,17 @@
 			</div>
 			
 			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="input-group mb-3 col-md-6 ">
+					<div class="input-group-prepend">
+						<span class="input-group-text" style="width: 120px"> 직급</span>
+					</div>
+					<input id="memlevel" name="memlevel" type="text" class="form-control" placeholder="" aria-label="Username" value="${salary.memlevel}" aria-describedby="basic-addon1">
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+			
+			<div class="row">
 				<div class="col-md-12" style="text-align: center">
 					<label style="background-color: gray; color: black;width: 550px">소득 내역</label>
 				</div>
