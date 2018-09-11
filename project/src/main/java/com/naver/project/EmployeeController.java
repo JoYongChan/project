@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -268,6 +269,65 @@ public class EmployeeController {
 		dao.deleteSalaryRow(salary);
 		
 		return "redirect:employeeSalaryListForm";
+	}
+	
+	@RequestMapping(value = "/employeeSalaryTaxForm", method = RequestMethod.GET)
+	public String employeeSalaryTaxForm(Model model) {
+		Calendar cal = Calendar.getInstance();
+		int yyyy = cal.get(Calendar.YEAR);
+		model.addAttribute("yyyy", yyyy+"");		
+		return "employee/employee_salary_tax";
+	}
+	
+	@RequestMapping(value = "/employeeSalaryTax", method = RequestMethod.POST)
+	public String employeeSalaryTax(Model model,@RequestParam String yyyy,@RequestParam String mm) {
+		SalaryDAO dao = sqlSessoin.getMapper(SalaryDAO.class);
+		if(mm.equals(""))
+			mm = "0";
+		mm = String.format("%02d", Integer.parseInt(mm));
+		
+		HashMap rollkey = new HashMap();
+		rollkey.putIfAbsent("yyyy", yyyy); 
+		rollkey.putIfAbsent("mm", mm);
+		dao.salaryrollDelete(rollkey);
+		
+		ArrayList<Salary> salarys = dao.selectyn();
+		for(Salary salary:salarys) {
+			salaryroll.setYyyy(yyyy);
+			salaryroll.setMm(mm);
+			salaryroll.setEmpcode(salary.getEmpcode());
+			salaryroll.setName(salary.getName());
+			salaryroll.setPartner(salary.getPartner());
+			salaryroll.setDependent20(salary.getDependent20());
+			salaryroll.setDependent60(salary.getDependent60());
+			salaryroll.setDisabled(salary.getDisabled());
+			salaryroll.setWomanpower(salary.getWomanpower());
+			int pay12 = (salary.getPay() + salary.getExtra())*12;
+			salaryroll.setPay12(pay12);
+			int totalpay = salary.getPay()+salary.getExtra();
+			salaryroll.setTotalpay(totalpay);
+			
+			dao.insertSalaryrollRow(salaryroll);
+		}
+		
+		return "redirect:employeeSalaryTaxListForm";
+	}
+	
+	@RequestMapping(value = "/employeeSalaryTaxListForm", method = RequestMethod.GET)
+	public String employeeSalaryTaxListForm(Model model, String yyyy,  String mm, @ModelAttribute Salaryroll salaryroll) {
+		SalaryDAO dao = sqlSessoin.getMapper(SalaryDAO.class);
+		Calendar cal = Calendar.getInstance();
+		int yy = cal.get(Calendar.YEAR);
+		model.addAttribute("yyyy", yy+"");	
+		
+		HashMap rollkey = new HashMap();
+		rollkey.putIfAbsent("yyyy", yy); //yyyy가 비어있으면 null
+		rollkey.putIfAbsent("mm", mm);
+		
+		ArrayList<Salaryroll> salaryrollList = dao.SalaryRollList(rollkey);
+		model.addAttribute("salaryrollList", salaryrollList);
+		
+		return "employee/employee_salary_tax_list_form";
 	}
 	
 	//근태commute

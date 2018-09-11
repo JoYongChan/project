@@ -16,6 +16,6 @@ public class Salaryroll {
 	private int dependent60;
 	private int disabled;
 	private int womanpower;
-	private int pay;
-	private int extra;
+	private int pay12;
+	private int totalpay;
 }

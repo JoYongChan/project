@@ -5,6 +5,8 @@
  <mapper namespace="com.naver.project.service.SalaryDAO">
 	<resultMap type="com.naver.project.entities.Salary" id="salaryMap"> 
 	</resultMap>
+	<resultMap type="com.naver.project.entities.Salaryroll" id="salaryRollMap"> 
+	</resultMap>
 	
 	<insert id="insertSalaryRow" parameterType="HashMap">
 		insert into salary(empcode,partner,dependent20,dependent60,disabled,
@@ -65,6 +67,32 @@
   	<delete id="salaryDelete" parameterType="hashMap">
   		delete from salary where empcode=#{empcode}
   	</delete>
+  	
+  	<insert id="insertSalaryrollRow" parameterType="hashMap">
+  		insert into salaryroll(yyyy,mm,empcode,name,partner,dependent20,
+  		dependent60,disabled,womanpower,pay12,totalpay
+		) values(
+		#{yyyy,jdbcType=VARCHAR},
+		#{mm,jdbcType=VARCHAR},
+		#{empcode,jdbcType=VARCHAR},
+		#{name,jdbcType=VARCHAR},
+		#{partner,jdbcType=INTEGER},
+		#{dependent20,jdbcType=INTEGER},
+		#{dependent60,jdbcType=INTEGER},
+		#{disabled,jdbcType=INTEGER},
+		#{womanpower,jdbcType=INTEGER},
+		#{pay12,jdbcType=INTEGER},
+		#{totalpay,jdbcType=INTEGER}
+		)
+  	</insert>
 	
+  	<delete id="salaryrollDelete" parameterType="hashMap">
+		delete from salaryroll where yyyy=#{yyyy} and mm=#{mm}
+	</delete>
+	
+	<select id="SalaryRollList" parameterType="hashMap" resultMap="salaryRollMap">
+  		select * from salaryroll where 
+  		yyyy =#{yyyy} and mm =#{mm}
+  	</select>
 	
  </mapper>

@@ -91,6 +91,8 @@
 						<a class="dropdown-item" href="employeeListForm">직원 리스트</a>
 						<a class="dropdown-item" href="employeeSalaryForm">직원 급여등록</a>
 						<a class="dropdown-item" href="employeeSalaryListForm">직원 급여리스트</a>
+						<a class="dropdown-item" href="employeeSalaryTaxForm">직원 급여 월별 계산</a>
+						<a class="dropdown-item" href="employeeSalaryTaxListForm">직원 급여 월별 리스트</a>
 						<a class="dropdown-item" href="employeeCommuteInsertForm">직원 근태등록</a>
 						<a class="dropdown-item" href="employeeCommuteListForm">직원 근태기록</a>
 					</c:otherwise>

@@ -75,6 +75,7 @@ $(document).ready(function(){
 	 $('#tabledatatable').DataTable({});
 	 $('#employeesalarydatatable').DataTable({}); 
 	 $('#employeecommutedatatable').DataTable({}); 
+	 $('#employeesalaryrollListdatatable').DataTable({}); 
 	 
 	 $('#selectstore').on('change',function () { 
 			var storename = $(this).children('option:selected').text();
@@ -318,6 +319,19 @@ $(document).ready(function(){
 		});
 	});
 	
+	  //급여 계산
+    $('#salarytax_insert_btn').on('click',function(){
+		$('#confirmModal').modal('show');
+		$('#confirm-modal-body').text('데이터가 지워지고 다시 생성됩니다.\n계산 처리 하시겠습니까?');
+		$('#confirm_modal_btn1').text("등록");
+		$('#confirm_modal_btn2').text("취소");
+		$('#confirm_modal_btn1').on('click',function(){
+			$('#employee_salarytax_form').attr('action', 'employeeSalaryTax');
+			$('#employee_salarytax_form').submit();
+		});
+		
+	});
+    
 });
 
 	
