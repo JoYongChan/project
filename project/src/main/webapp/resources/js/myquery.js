@@ -244,7 +244,6 @@ function removeChar(event) {
 }
 
 $(document).ready(function(){
-<<<<<<< HEAD
 	// board_detail
 	$('#board_detail_boarddeletebtn').on('click',function(){
 		var b_seq = $('#boardb_seq').val();
@@ -270,13 +269,8 @@ $(document).ready(function(){
 		});
 	});
 
-	//table_insert_form
-	$('#table_confirm').on('click',function(){
-		alert('중복체크');
-=======
 	$('#storecode').keyup(function () { 
 	    this.value = this.value.replace(/[^0-9]/g,'');
->>>>>>> cca2e0e7877dcac410d4d1bff6cf8b2ece401fc9
 	});
 	$('#ceocode').keyup(function () { 
 		this.value = this.value.replace(/[^0-9]/g,'');
@@ -309,7 +303,6 @@ $(document).ready(function(){
 	});
 	
 	 $('#employeedatatable').DataTable({});
-<<<<<<< HEAD
 	 
 		//<!-- Bootstrap - DataTables -->
 		$('#example').DataTable();
@@ -320,8 +313,6 @@ $(document).ready(function(){
 		});
 		
 	
-	
-=======
 	 $('#storedatatable').DataTable({});
 	 $('#tabledatatable').DataTable({});
 	 $('#employeesalarydatatable').DataTable({}); 
@@ -583,7 +574,6 @@ $(document).ready(function(){
 		
 	});
     
->>>>>>> cca2e0e7877dcac410d4d1bff6cf8b2ece401fc9
 });
 
 	

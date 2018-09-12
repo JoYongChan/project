@@ -9,7 +9,7 @@
 </head>
 <body>
 	<form id="employee_insert_form" name="employee_insert_form" method="post" action="employeeInsert" data-parsley-validate="true"
-	enctype="multipart/form-data">
+	enctype="multipart/form-data" role="form">
 		<input type="hidden" id="employeeconfirm_yn" value="n">
 		<div class="container" style="margin-top: 30px">
 			<div class="row">
