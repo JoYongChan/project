@@ -10,39 +10,29 @@
   			)values(
   			#{phone,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{birthday,jdbcType=VARCHAR},
   			#{gender,jdbcType=VARCHAR},#{postno,jdbcType=VARCHAR},#{addr1,jdbcType=VARCHAR},
-  			#{addr2,jdbcType=VARCHAR},#{addr2,jdbcType=VARCHAR},#{addr3,jdbcType=VARCHAR},
-  			#{inputdate,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR}
+  			#{addr2,jdbcType=VARCHAR},#{addr3,jdbcType=VARCHAR},#{inputdate,jdbcType=VARCHAR},
+  			#{password,jdbcType=VARCHAR}
   			)
   			</insert>
-<!--   		<select id="login" parameterType="String" resultMap="memberMap"> -->
-<!--   				select * from member where  -->
-<!--   				email=#{email} -->
-<!--   		</select> -->
-<!--   		<select id="selectConfirm" parameterType="String" resultType="int"> -->
-<!--    				select  count(*)  from member where email=#{email} -->
-<!--   		</select> -->
-<!--   		<select id="selectAll" resultMap="memberMap"> -->
-<!--   			select * from member -->
-<!--   		</select> -->
-<!--   			<select id="selectOne" parameterType="String" resultMap="memberMap"> -->
-<!--   			select * from member where email=#{email} -->
-<!--   			</select> -->
-<!--   		<update id="updateRow" parameterType="hashMap"> -->
-<!--   				update member set -->
-<!--   				name=#{name,jdbcType=VARCHAR},password=#{password,jdbcType=VARCHAR}, -->
-<!--   				phone1=#{phone1,jdbcType=VARCHAR},phone2=#{phone2,jdbcType=VARCHAR}, -->
-<!--   				phone3=#{phone3,jdbcType=VARCHAR},postno=#{postno,jdbcType=VARCHAR}, -->
-<!--   				addr1=#{addr1,jdbcType=VARCHAR},addr2=#{addr2,jdbcType=VARCHAR}, -->
-<!--   				inputdate=#{inputdate,jdbcType=VARCHAR},photo=#{photo,jdbcType=VARCHAR} -->
-<!--   				where email = #{email} -->
-<!--   		</update> -->
-<!--   		<delete id="deleteRow" parameterType="String"> -->
-<!-- 				delete from member where email=#{email}  		 -->
-<!--   		</delete> -->
-<!--   		<update id="updatePassword" parameterType="hashMap"> -->
-<!--   				update member set password= #{password,jdbcType=VARCHAR} -->
-<!--   				where email=#{email} -->
-<!--   		</update> -->
+  			<select id="selectAll" resultMap="guestMap">
+  			select * from guest
+  			</select>
+			<select id="selectOne" parameterType="String" resultMap="guestMap">
+  			select * from guest where phone=#{phone}
+  			</select>
+  			
+  			<update id="updateRow" parameterType="hashMap">
+  				update guest set
+  				name=#{name,jdbcType=VARCHAR},birthday=#{birthday,jdbcType=VARCHAR},
+  				gender=#{gender,jdbcType=VARCHAR},postno=#{postno,jdbcType=VARCHAR},
+  				addr1=#{addr1,jdbcType=VARCHAR},addr2=#{addr2,jdbcType=VARCHAR},
+  				addr3=#{addr3,jdbcType=VARCHAR},
+  				password=#{password,jdbcType=VARCHAR}
+  				where phone = #{phone}
+  			</update>
+  			<delete id="deleteRow" parameterType="String">
+				delete from guest where phone=#{phone}  		
+  			</delete>
   
  </mapper>
 

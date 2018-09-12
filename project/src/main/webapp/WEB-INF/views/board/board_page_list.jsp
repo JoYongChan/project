@@ -12,7 +12,7 @@
 <body>
 	<form name="board_page_list" id="board_page_list_login" action="boardPageList"
 		data-parsley-validate="true" enctype="multipart/form-data">
-		<div class="container" style="margin-top: 70px">
+		<div class="container" style="margin-top: 10px">
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-8 text-center">
@@ -25,7 +25,7 @@
 				<thead>
 					<tr style="text-align: center">
 						<th>글번호</th>
-						<th>ID</th>
+						<th>E-mail</th>
 						<th>작성자</th>
 						<th>제목</th>
 						<th>첨부파일</th>
@@ -37,7 +37,7 @@
 					<c:forEach var="boards" items="${boards}">
 						<tr style="text-align: center">
 							<td class="text-center">${boards.b_ref}</td>
-							<td class="text-center">${boards.b_id}</td>
+							<td class="text-center">${boards.b_email}</td>
 							<td class="text-center">${boards.b_name}</td>
 							<td style="text-align: left"><a
 								href="boardDetail?b_seq=${boards.b_seq }">
@@ -68,17 +68,18 @@
 				</div>
 				<div class="col-md-1"></div>
 			</div>
-			<div class="row">
+			<div class="row" style="margin-bottom: 100px">
 				<div class="col-md-8"></div>
 				<input type="text" id="board_page_list_find" name="find"
 					class="form-control col-md-1" placeholder="검색어" aria-label="find"
 					aria-describedby="basic-addon1" value="${find}"/>
 				<button type="submit" id="findbtn" class="btn btn-success" name="findbtn">검색</button>
-				
-				<c:if test="${sessionemail != null }">
-					<button type="button" id="board_page_list_save" class="btn btn-primary "
-						name="save" onclick="location.href = 'boardinsertForm'">글쓰기</button>
-				</c:if>
+				<button type="button" id="board_page_list_save" class="btn btn-primary "
+						name="save" onclick="location.href = 'boardInsertForm'">글쓰기</button>
+<%-- 				<c:if test="${sessionemail != null }"> --%>
+<!-- 					<button type="button" id="board_page_list_save" class="btn btn-primary " -->
+<!-- 						name="save" onclick="location.href = 'boardinsertForm'">글쓰기</button> -->
+<%-- 				</c:if> --%>
 				<button type="button" class="btn btn-danger"
 					onclick="location.href = 'index'">취소</button>
 			</div>

@@ -1,3 +1,187 @@
+function comment_update(c_code){
+	var commentList = $('#commentList').val();
+	var b_code = $('#b_code').val();
+    $.ajax({
+        type:'GET',
+        url : "commentList",
+        dataType : "json",
+        data : "commentList=" + commentList + "&b_code=" + b_code,
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+        success : function(data){
+            
+            var html = "";
+            var cCnt = data.length;
+            
+            if(data.length > 0){
+                
+                for(i=0; i<data.length; i++){
+                    html += "<div>";
+                    html += "<div><table class='table'><h6><strong>"+data[i].writer+"</strong></h6>";
+                    html += "<input type='text' value= "+ data[i].content+"><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
+                    		"<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
+                    		"<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
+                    		"<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
+                    		"<td><a href='#' onClick='comment_update()' " +
+                    		"class='btn btn-warning btn-sm'>댓글수정</a>&nbsp" +
+                    		"<a href='#' onClick='getCommentList()' " +
+                    		"class='btn btn-danger btn-sm'>취소</a></td></tr>";
+                    html += "</table></div>";
+                    html += "</div>";
+                }
+                
+            } else {
+                
+                html += "<div>";
+                html += "<div><table class='table'><h6><strong>등록된 댓글이 없습니다.</strong></h6>";
+                html += "</table></div>";
+                html += "</div>";
+                
+            }
+            
+            $("#cCnt").html( cCnt );
+            $("#commentList").html(html);
+            
+        },
+        error:function(request,status,error){
+            
+       }
+        
+    });
+}
+//function comment_update(){
+//	$('#commentupdateModal').modal('show');
+//	$(".commentupdatemodal-body").html("<div class='col-md-1'></div><div class='input-group-prepend'><span class='input-group-text'>내용</span><input type='text'/></div>");
+//	$('.modaldetail_btn2').text('취소');
+//	$('.modaldetail_btn1').on('click',function(){
+//		$.ajax({
+//	        type:'GET',
+//	        url : "commentDelete",
+//	        data : "c_code=" + c_code,
+//	        datatype : 'json',
+//	        success : function(data){
+//	            if(data=="success")
+//	            {
+//	                getCommentList();
+//	            }
+//	        },
+//	        error:function(request,status,error){
+//	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+//	       }
+//	        
+//	    });
+//	});
+//    
+//}
+function comment_delete(c_code){
+	$('#commentdeleteModal').modal('show');
+	$('.commentdeletemodal-body').text('삭제 하시겠습니까?');
+	$('.modaldetail_btn2').text('취소');
+	$('.modaldetail_btn1').on('click',function(){
+		$.ajax({
+	        type:'GET',
+	        url : "commentDelete",
+	        data : "c_code=" + c_code,
+	        datatype : 'json',
+	        success : function(data){
+	            if(data=="success")
+	            {
+	                getCommentList();
+	            }
+	        },
+	        error:function(request,status,error){
+	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	       }
+	        
+	    });
+	});
+    
+}
+function fn_comment(b_seq){
+	var c_code = $('#c_code').val();
+	var content = $('#content').val();
+    $.ajax({
+        type:'POST',
+        url : "commentInsert",
+        data : "content=" + content + "&b_seq=" + b_seq,
+        datatype : 'json',
+        contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+        success : function(data){
+            if(data=="success")
+            {
+            	$("#content").val("");
+                getCommentList();
+                
+            }
+        },
+        error:function(request,status,error){
+            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+       }
+        
+    });
+}
+
+
+// 초기 페이지 로딩시 댓글 불러오기
+$(function(){
+    
+    getCommentList();
+    
+});
+ 
+// 댓글 불러오기(Ajax)
+
+function getCommentList(){
+	var commentList = $('#commentList').val();
+	var b_code = $('#b_code').val();
+    $.ajax({
+        type:'GET',
+        url : "commentList",
+        dataType : "json",
+        data : "commentList=" + commentList + "&b_code=" + b_code,
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+        success : function(data){
+            
+            var html = "";
+            var cCnt = data.length;
+            
+            if(data.length > 0){
+                
+                for(i=0; i<data.length; i++){
+                    html += "<div>";
+                    html += "<div><table class='table'><h6><strong>"+data[i].writer+"</strong></h6>";
+                    html += data[i].content + "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
+                    		"<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
+                    		"<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
+                    		"<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
+                    		"<td><a href='#' onClick='comment_update()' " +
+                    		"class='btn btn-warning btn-sm'>댓글수정</a>&nbsp" +
+                    		"<a href='#' onClick='comment_delete("+ data[i].c_code +")' " +
+                    		"class='btn btn-danger btn-sm'>댓글삭제</a></td></tr>";
+                    html += "</table></div>";
+                    html += "</div>";
+                }
+                
+            } else {
+                
+                html += "<div>";
+                html += "<div><table class='table'><h6><strong>등록된 댓글이 없습니다.</strong></h6>";
+                html += "</table></div>";
+                html += "</div>";
+                
+            }
+            
+            $("#cCnt").html(cCnt);
+            $("#commentList").html(html);
+            
+        },
+        error:function(request,status,error){
+            
+       }
+        
+    });
+}
+
+
 function ZipcodeFind() {
 	new daum.Postcode({
 		oncomplete: function(data) {
@@ -32,11 +216,59 @@ function ZipcodeFind() {
 			document.getElementById('oldaddr').value = data.jibunAddress;
 		}
 	}).open();
-
 }
 
+//<!-- 번호입력시 자동으로 다음 input으로 focus -->
+function phone2_lengthchk(code) {
+	if (code.value.length == 4) {
+		document.guest_insert_form.phone3.focus();
+	}
+}
+
+//<!-- input에 영어 입력못하게하기 -->
+function onlyNumber(event){
+	event = event || window.event;
+	var keyID = (event.which) ? event.which : event.keyCode;
+	if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 || keyID == 9) 
+		return;
+	else
+		return false;
+}
+function removeChar(event) {
+	event = event || window.event;
+	var keyID = (event.which) ? event.which : event.keyCode;
+	if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 || keyID == 9 ) 
+		return;
+	else
+		event.target.value = event.target.value.replace(/[^0-9]/g, "");
+}
 
 $(document).ready(function(){
+	// board_detail
+	$('#board_detail_boarddeletebtn').on('click',function(){
+		var b_seq = $('#boardb_seq').val();
+		var b_ref = $('#boardb_ref').val();
+		$('#detailModal').modal('show');
+		$('.detailmodal-body').text('삭제 하시겠습니까?');
+		$('.modaldetail_btn2').text('취소');
+		$('.modaldetail_btn1').on('click',function(){
+			location.href="boardDelete?b_seq="+b_seq+"&b_ref="+b_ref;
+			alert("E-mail을 입력하세요!")
+		});
+	});
+	//guest update delete
+	$('#guest_update_form_delete').on('click', function(){
+		$('#guest_update_form_myModal').modal('show');
+		$('.modal-body').text("삭제 하시겠습니까?");
+		$('.modal_btn1').text("삭제");
+		$('.modal_btn2').text("취소");
+		$('.modal_btn1').on('click', function(){
+			var url = "guestDelete?phone="+ $('#phone1').val()+$('#phone2').val()+$('#phone3').val();
+			// location.href="url";
+			$(location).attr('href',url);
+		});
+	});
+
 	//table_insert_form
 	$('#table_confirm').on('click',function(){
 		alert('중복체크');
@@ -72,14 +304,16 @@ $(document).ready(function(){
 	});
 	
 	 $('#employeedatatable').DataTable({});
+	 
+		//<!-- Bootstrap - DataTables -->
+		$('#example').DataTable();
+		
+		//<!-- geustinsertform -->
+		$('#guset_insert_form_save').on('click', function() {
+			$('#guest_insert_form').submit();
+		});
+		
 	
-});
-
-$(document).ready(function(){
 	
-	$('#logout1').on('click',function(){
-	});
-	//<!-- Bootstrap - DataTables -->
-	$('#example').DataTable();
 });
 	

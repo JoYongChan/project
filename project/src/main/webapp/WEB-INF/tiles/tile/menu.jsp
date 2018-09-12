@@ -34,7 +34,7 @@
 				class="fas fa-fw fa-folder"></i> <span>게시판</span>
 		</a>
 			<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-				<a class="dropdown-item" href="boardListForm">게시판</a>
+				<a class="dropdown-item" href="boardPageList">게시판</a>
 			</div></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
