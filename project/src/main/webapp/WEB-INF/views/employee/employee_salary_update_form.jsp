@@ -87,7 +87,8 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text" style="width: 120px"> 직급</span>
 					</div>
-					<input id="memlevel" name="memlevel" type="text" class="form-control" placeholder="" aria-label="Username" value="${salary.memlevel}" aria-describedby="basic-addon1">
+					<input id="memlevel" name="memlevel" type="text" class="form-control" placeholder="" aria-label="Username" value="${salary.memlevel}" readonly="readonly" 
+					aria-describedby="basic-addon1">
 				</div>
 				<div class="col-md-3"></div>
 			</div>

@@ -256,8 +256,59 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value = "/employeeSalaryUpdateForm", method = RequestMethod.POST)
-	public String employeeSalaryUpdateForm(Model model,@ModelAttribute Salary salary) {
+	public String employeeSalaryUpdateForm(Model model,@ModelAttribute Salary salary,String empcode) {
 		SalaryDAO dao = sqlSessoin.getMapper(SalaryDAO.class);
+		CommuteDAO commutedao = sqlSessoin.getMapper(CommuteDAO.class);
+		
+		ArrayList<Commute> commute = commutedao.selectCommutes(empcode);
+		for(Commute commutes:commute) {
+			commutes.setAthh(commutes.getAttendancetime().substring(0, 2));
+			commutes.setLehh(commutes.getLeaveworktime().substring(0, 2));
+			
+			int hhtime = (Integer.parseInt(commutes.getLehh()) - Integer.parseInt(commutes.getAthh())-1); //일한시간 8시간
+			int hhpay = 0; int hhextra = 0; int holidaypay = 0; int hhnighttime = 2; //시급,추가급여,주휴수당,야근시간 2시간
+			int extra = 0;
+			int daycount = commutedao.selectCount(empcode); //일한날짜
+			int nighttime = commutes.getLeaveworktype(); //야근유무
+			
+			if(employee.getMemlevel() == 0) {
+				hhpay = 30000;
+				hhextra = (int) (hhpay * 1.5);
+				holidaypay = (hhpay * 8) * 4;
+				int pay = (hhpay * hhtime)  * daycount;
+				salary.setPay(pay);
+				if(nighttime == 1) {
+					extra = ((hhextra * hhnighttime) * daycount);
+				}else {
+					extra = 0;
+				}
+				salary.setExtra(extra+holidaypay);
+			}else if(employee.getMemlevel() == 1) {
+				hhpay = 15500;
+				hhextra = (int) (hhpay * 1.5);
+				holidaypay = (hhpay * 8)  * 4;
+				int pay = (hhpay * hhtime) * daycount;
+				salary.setPay(pay);
+				if(nighttime == 1) {
+					extra = ((hhextra * hhnighttime) * daycount);
+				}else {
+					extra = 0;
+				}
+				salary.setExtra(extra+holidaypay);
+			}else {
+				hhpay = 12000;
+				hhextra = (int) (hhpay * 1.5);
+				holidaypay = (hhpay * 8) * 4;
+				int pay = (hhpay * hhtime) * daycount;
+				salary.setPay(pay);
+				if(nighttime == 1) {
+					extra = ((hhextra * hhnighttime) * daycount);
+				}else {
+					extra = 0;
+				}
+				salary.setExtra(extra+holidaypay);
+			}
+		}
 		dao.updateSalaryRow(salary);
 		
 		return "redirect:employeeSalaryListForm";
