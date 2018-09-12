@@ -16,4 +16,9 @@ public class Salary {
 	private int pay;
 	private int extra;
 	private String yn;
+	private String name;
+	private String gender;
+	private int age;
+	private String hiredate;
+	private int memlevel;
 }

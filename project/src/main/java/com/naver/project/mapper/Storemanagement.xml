@@ -17,4 +17,40 @@
 		#{detailaddr,jdbcType=VARCHAR},#{storephone,jdbcType=VARCHAR}
 		)
 	</insert>
+	
+	<select id="selectStoreConfirm" parameterType="String" resultType="int">
+   		select count(*) from storemanagement where storecode=#{storecode}
+	</select>
+	
+	<select id="selectAll" resultMap="storemanagementMap">
+  		select * from storemanagement
+  	</select>
+  	
+  	<select id="selectOne" parameterType="String" resultMap="storemanagementMap">
+  		select * from storemanagement where storecode=#{storecode}
+  	</select>
+  	
+  	<update id="updateRow" parameterType="HashMap">
+  		update storemanagement set 
+  		storecode=#{storecode,jdbcType=VARCHAR},
+  		ceocode=#{ceocode,jdbcType=VARCHAR},
+  		storepass=#{storepass,jdbcType=VARCHAR},
+  		storename=#{storename,jdbcType=VARCHAR},
+  		busno=#{busno,jdbcType=VARCHAR},
+  		postno=#{postno,jdbcType=VARCHAR},
+  		newaddr=#{newaddr,jdbcType=VARCHAR},
+  		oldaddr=#{oldaddr,jdbcType=VARCHAR},
+  		detailaddr=#{detailaddr,jdbcType=VARCHAR},
+  		storephone=#{storephone,jdbcType=VARCHAR}
+		where storecode=#{storecode} and ceocode=#{ceocode}
+  	</update>
+  	
+  	<delete id="deleteRow" parameterType="String">
+  		delete from storemanagement where storecode=#{storecode}
+  	</delete>
+	
+	<select id="login" parameterType="hashMap" resultMap="storemanagementMap">
+ 		select * from storemanagement where storecode=#{storecode} and storepass=#{storepass}
+ 	</select>
+	
  </mapper>

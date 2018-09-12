@@ -244,6 +244,7 @@ function removeChar(event) {
 }
 
 $(document).ready(function(){
+<<<<<<< HEAD
 	// board_detail
 	$('#board_detail_boarddeletebtn').on('click',function(){
 		var b_seq = $('#boardb_seq').val();
@@ -272,25 +273,29 @@ $(document).ready(function(){
 	//table_insert_form
 	$('#table_confirm').on('click',function(){
 		alert('중복체크');
+=======
+	$('#storecode').keyup(function () { 
+	    this.value = this.value.replace(/[^0-9]/g,'');
+>>>>>>> cca2e0e7877dcac410d4d1bff6cf8b2ece401fc9
 	});
-	//store_insert_form
-	$('#store_confirm').on('click',function(){
-		alert('중복체크');
+	$('#ceocode').keyup(function () { 
+		this.value = this.value.replace(/[^0-9]/g,'');
 	});
-	
-	$('#ceo_confirm').on('click',function(){
-		alert('중복체크');
+	$('#busno').keyup(function () { 
+		this.value = this.value.replace(/[^0-9]/g,'');
 	});
-	//table_insert_form
-	$('#table_save_btn').on('click',function(){
-		alert('테이블계정저장');
+	$('#storephone').keyup(function () { 
+		this.value = this.value.replace(/[^0-9]/g,'');
 	});
-	//store_insert_form
-	$('#store_save_btn').on('click',function(){
+	$('#phone').keyup(function () { 
+		this.value = this.value.replace(/[^0-9]/g,'');
+	});
+	$('#age').keyup(function () { 
+		this.value = this.value.replace(/[^0-9]/g,'');
 	});
 	
 	$('#cancel_btn').on('click',function(){
-		$(location).attr('href',"loginForm");
+		$(location).attr('href',"home");
 	});
 	//employee_insert_form image
 	$('#image').on('click',function(){
@@ -304,6 +309,7 @@ $(document).ready(function(){
 	});
 	
 	 $('#employeedatatable').DataTable({});
+<<<<<<< HEAD
 	 
 		//<!-- Bootstrap - DataTables -->
 		$('#example').DataTable();
@@ -315,5 +321,269 @@ $(document).ready(function(){
 		
 	
 	
+=======
+	 $('#storedatatable').DataTable({});
+	 $('#tabledatatable').DataTable({});
+	 $('#employeesalarydatatable').DataTable({}); 
+	 $('#employeecommutedatatable').DataTable({}); 
+	 $('#employeesalaryrollListdatatable').DataTable({}); 
+	 
+	 $('#selectstore').on('change',function () { 
+			var storename = $(this).children('option:selected').text();
+			var empcode = $(this).val();
+			$.ajax({
+				type : 'POST',
+				data : "empcode="+empcode,
+				url : 'storeSelected',
+				success : function(data){
+					$('#storename').attr('value',data.storename);
+				},
+				error : function(xhr, status, error){
+					alert('ajax error'+error);
+				}
+			});
+		});
+	 
+	//store_insert_form
+	 $('#store_confirm').on('click',function(){ 
+			var storecode = $('#storecode').val();
+			if(storecode==""){
+				$('#confirmModal').modal('show');
+				$('#confirm-modal-body').text('매장번호를 입력하세요.');
+				$('#confirm_modal_btn1').text("확인");
+				$('#confirm_modal_btn2').hide();
+				return;
+			}else{
+				$.ajax({
+					type : 'POST',
+					data : "storecode="+storecode,
+					url : 'storecodeConfirm',
+					success : function(data){
+						if(data == 0){
+							$('#confirmModal').modal('show');
+							$('#confirm-modal-body').text('사용가능한 매장번호입니다.');
+							$('#confirm_modal_btn1').on('click',function(){
+								$('#storeconfirm_yn').val("y");
+							});
+						}else{
+							$('#confirmModal').modal('show');
+							$('#confirm-modal-body').text('중복된 매장번호입니다.\n다시 입력해주세요.');
+							$('#confirm_modal_btn1').text("확인");
+							$('#confirm_modal_btn2').hide();
+						}
+						
+					},
+					error : function(xhr, status, error){
+						alert('ajax error');
+					}
+				});
+			}
+		});
+	 
+	//store_insert_form
+	$('#store_save_btn').on('click',function(){
+		if($('#storeconfirm_yn').val() == "n"){
+			 $('#confirmModal').modal('show');
+			 $('#confirm-modal-body').text('매장번호를 중복체크 하세요.');
+			 $('#confirm_modal_btn1').text("확인");
+			 $('#confirm_modal_btn2').hide();
+			return;
+		}
+		$('#store_insert_form').submit();
+	});
+	
+	$('#store_delete_btn').on('click',function(){
+		$('#confirmModal').modal('show');
+		$('#confirm-modal-body').text('정말 삭제 하시겠습니까?');
+		$('#confirm_modal_btn1').text("삭제");
+		$('#confirm_modal_btn2').text("취소");
+		$('#confirm_modal_btn1').on('click',function(){
+			var url = "storeDelete?storecode="+$('#storecode').val();
+			$(location).attr('href',url);
+		});
+	});
+	
+	//tableaccount
+	$('#table_confirm').on('click',function(){
+		 var tablecode = $('#tablecode').val();
+		 if(tablecode==""){
+			 $('#confirmModal').modal('show');
+			 $('#confirm-modal-body').text('테이블코드를 입력하세요.');
+			 $('#confirm_modal_btn1').text("확인");
+			 $('#confirm_modal_btn2').hide();
+			 return;
+		 }else{
+			 $.ajax({
+				 type : 'POST',
+				 data : "tablecode="+tablecode,
+				 url : 'tablecodeConfirm',
+				 success : function(data){
+					 if(data == 0){
+						 $('#confirmModal').modal('show');
+						 $('#confirm-modal-body').text('사용가능한 테이블코드입니다.');
+						 $('#confirm_modal_btn1').on('click',function(){
+							 $('#tableconfirm_yn').val("y");
+						 });
+					 }else{
+						 $('#confirmModal').modal('show');
+						 $('#confirm-modal-body').text('중복된 테이블코드입니다.\n다시 입력해주세요.');
+						 $('#confirm_modal_btn1').text("확인");
+						 $('#confirm_modal_btn2').hide();
+					 }
+					 
+				 },
+				 error : function(xhr, status, error){
+					 alert('ajax error');
+				 }
+			 });
+		 }
+	 });
+	
+	
+	$('#table_save_btn').on('click',function(){
+		if($('#tableconfirm_yn').val() == "n"){
+			 $('#confirmModal').modal('show');
+			 $('#confirm-modal-body').text('테이블코드를 중복체크 하세요.');
+			 $('#confirm_modal_btn1').text("확인");
+			 $('#confirm_modal_btn2').hide();
+			return;
+		}
+		$('#table_insert_form').submit();
+	});
+	
+	$('#table_delete_btn').on('click',function(){
+		$('#confirmModal').modal('show');
+		$('#confirm-modal-body').text('정말 삭제 하시겠습니까?');
+		$('#confirm_modal_btn1').text("삭제");
+		$('#confirm_modal_btn2').text("취소");
+		$('#confirm_modal_btn1').on('click',function(){
+			var url = "tableDelete?tablecode="+$('#tablecode').val();
+			$(location).attr('href',url);
+		});
+	});
+	
+	//employee_insert_form
+	//employee_confirm
+	 $('#employee_confirm').on('click',function(){ 
+			var empcode = $('#empcode').val();
+			if(empcode==""){
+				$('#confirmModal').modal('show');
+				$('#confirm-modal-body').text('사원번호를 입력하세요.');
+				$('#confirm_modal_btn1').text("확인");
+				$('#confirm_modal_btn2').hide();
+				return;
+			}else{
+				$.ajax({
+					type : 'POST',
+					data : "empcode="+empcode,
+					url : 'empcodeConfirm',
+					success : function(data){
+						if(data == 0){
+							$('#confirmModal').modal('show');
+							$('#confirm-modal-body').text('사용가능한 사원번호입니다.');
+							$('#confirm_modal_btn1').on('click',function(){
+								$('#employeeconfirm_yn').val("y");
+							});
+						}else{
+							$('#confirmModal').modal('show');
+							$('#confirm-modal-body').text('중복된 사원번호입니다.\n다시 입력해주세요.');
+							$('#confirm_modal_btn1').text("확인");
+							$('#confirm_modal_btn2').hide();
+						}
+						
+					},
+					error : function(xhr, status, error){
+						alert('ajax error');
+					}
+				});
+			}
+		});
+	 
+	$('#employee_save_btn').on('click',function(){
+		if($('#employeeconfirm_yn').val() == "n"){
+			 $('#confirmModal').modal('show');
+			 $('#confirm-modal-body').text('사원번호를 중복체크 하세요.');
+			 $('#confirm_modal_btn1').text("확인");
+			 $('#confirm_modal_btn2').hide();
+			return;
+		}
+		$('#employee_insert_form').submit();
+	});
+	
+	$('#employee_delete_btn').on('click',function(){
+			$('#confirmModal').modal('show');
+			$('#confirm-modal-body').text('사원정보를 삭제하시겠습니까?');
+			$('#confirm_modal_btn1').text("확인");
+			$('#confirm_modal_btn2').text("취소");
+			$('#confirm_modal_btn1').on('click',function(){
+				var url = "employeeDelete?empcode="+$('#empcode').val();
+				$(location).attr('href',url);
+			});
+	});
+	
+	$('#selectemployee').on('change',function () { 
+		var name = $(this).children('option:selected').text();
+		var empcode = $(this).val();
+		$.ajax({
+			type : 'POST',
+			data : "empcode="+empcode,
+			url : 'employeeSelected',
+			success : function(data){
+				$('#name').attr('value',data.name);
+				$('#gender').attr('value',data.gender);
+				$('#age').attr('value',data.age);
+				$('#hiredate').attr('value',data.hiredate);
+				$('#memlevel').attr('value',data.memlevel);
+				$('#attendancetype').attr('value',data.attendancetype);
+				$('#leaveworktype').attr('value',data.leaveworktype);
+			},
+			error : function(xhr, status, error){
+				alert('ajax error'+error);
+			}
+		});
+	});
+	
+	$('#employee_salary_save_btn').on('click',function(){
+		$('#employee_salary_form').submit();
+	});
+	
+	$('#employee_salary_delete_btn').on('click',function(){
+		$('#confirmModal').modal('show');
+		$('#confirm-modal-body').text('사원 급여를 삭제 하시겠습니까?');
+		$('#confirm_modal_btn1').text("삭제");
+		$('#confirm_modal_btn2').text("취소");
+		$('#confirm_modal_btn1').on('click',function(){
+			var url = "employeeSalaryDelete?empcode="+$('#empcode').val();
+			$(location).attr('href',url);
+		});
+	});
+	
+	$('#employee_commute_delete_btn').on('click',function(){
+		var empcode =$('#empcode').val();
+		var commutedate =$('#commutedate').val();
+		$('#confirmModal').modal('show');
+		$('#confirm-modal-body').text('사원 근태를 삭제 하시겠습니까?');
+		$('#confirm_modal_btn1').text("삭제");
+		$('#confirm_modal_btn2').text("취소");
+		$('#confirm_modal_btn1').on('click',function(){
+			location.href="employeeCommuteDelete?empcode="+empcode+"&commutedate="+commutedate;
+		});
+	});
+	
+	  //급여 계산
+    $('#salarytax_insert_btn').on('click',function(){
+		$('#confirmModal').modal('show');
+		$('#confirm-modal-body').text('데이터가 지워지고 다시 생성됩니다.\n계산 처리 하시겠습니까?');
+		$('#confirm_modal_btn1').text("등록");
+		$('#confirm_modal_btn2').text("취소");
+		$('#confirm_modal_btn1').on('click',function(){
+			$('#employee_salarytax_form').attr('action', 'employeeSalaryTax');
+			$('#employee_salarytax_form').submit();
+		});
+		
+	});
+    
+>>>>>>> cca2e0e7877dcac410d4d1bff6cf8b2ece401fc9
 });
+
 	

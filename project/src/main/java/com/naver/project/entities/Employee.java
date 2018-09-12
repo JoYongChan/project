@@ -16,9 +16,11 @@ public class Employee {
 	private String oldaddr;
 	private String detailaddr;
 	private String phone;
-	private String phote;
+	private String beforephoto;
+	private String photo;
 	private String birthday;
 	private String hiredate;
 	private int memlevel;
+	private String storename;
 	
 }

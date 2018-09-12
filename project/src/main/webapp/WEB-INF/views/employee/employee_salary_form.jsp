@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,9 +27,9 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text" style="width: 120px"> 사원번호 </span>
 					</div>
-					<select id="empcode" name="empcode" style="width: 410px">
+					<select id="selectemployee" name="empcode" style="width: 410px">
 						<c:forEach var="employee" items="${employee}">
-							<option value=""></option>
+							<option value="${employee.empcode}" >${employee.empcode}</option>
 						</c:forEach> 
 					</select>
 				</div>
@@ -80,6 +81,17 @@
 			</div>
 			
 			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="input-group mb-3 col-md-6 ">
+					<div class="input-group-prepend">
+						<span class="input-group-text" style="width: 120px"> 직급</span>
+					</div>
+					<input id="memlevel" name="memlevel" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+			
+			<div class="row">
 				<div class="col-md-12" style="text-align: center">
 					<label style="background-color: gray; color: black;width: 550px">소득 내역</label>
 				</div>
@@ -91,10 +103,10 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text" style="width: 120px"> 기본급 </span>
 					</div>
-					<input id="pay" name="pay" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1"	>
+					<input id="pay" name="pay" type="text" class="form-control" placeholder="" value="0" aria-label="Username" aria-describedby="basic-addon1"	>
 					
 						<span class="input-group-text" style="width: 120px"> 급여 </span>
-						<input id="extra" name="extra" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1"	>
+						<input id="extra" name="extra" type="text" class="form-control" placeholder="" value="0" aria-label="Username" aria-describedby="basic-addon1"	>
 				</div>
 			</div>
 			
@@ -123,6 +135,8 @@
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
 					</select>
 				</div>
 			</div>
@@ -147,6 +161,8 @@
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
 					</select>
 				</div>
 			</div>
@@ -160,8 +176,6 @@
 					<select id="womanpower" name="womanpower"  style="width: 130px">
 						<option value="0">0</option>
 						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
 					</select>
 					<div class="input-group-prepend" style="margin-left: 50px">
 						<span class="input-group-text" style="width: 100px"> 급여계산 </span>
@@ -176,8 +190,9 @@
 			<div class="row" style="margin-bottom: 100px; margin-top: 20px">
 				<div class="col-md-5"></div>
 				<div class="col-md-4">
-					<button id="employee_salary_save_btn" name="employee_salary_save_btn" type="submit" class="btn btn-success save" style="margin-right: 10px; color: #000000">저 장</button>
-					<button  id="cancel_btn" name="cancel_btn"  type="reset" class="btn btn-primary save" style="margin-left: 10px; color: #000000">취 소</button>
+					<button id="employee_salary_save_btn" name="employee_salary_save_btn" type="button" class="btn btn-success save"
+					 style="margin-right: 10px; color: #000000">저 장</button>
+					<button  id="cancel_btn" name="cancel_btn"  type="reset" class="btn btn-danger" style="margin-left: 10px; color: #000000">취 소</button>
 				</div>
 				<div class="col-md-3"></div>
 			</div>

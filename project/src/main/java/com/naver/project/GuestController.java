@@ -42,6 +42,7 @@ public class GuestController {
 	}
 	
 	@RequestMapping(value = "/guestInsert", method = RequestMethod.POST)
+<<<<<<< HEAD
 	public String guestInsert(@ModelAttribute Guest guest ) {
 		Date date = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm");
@@ -51,6 +52,24 @@ public class GuestController {
 		guest.setBirthday(guest.getYyyy()+guest.getMm()+guest.getDd());
 		guest.setPhone(guest.getPhone1()+guest.getPhone2()+guest.getPhone3());
 		guestdao.insertRow(guest);
+=======
+	public String guestInsert(Model model, @ModelAttribute Guest guest) {
+//		Date date = new Date();
+//		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+//		member.setInputdate(format.format(date));
+//		MemberDao dao = sqlSession.getMapper(MemberDao.class);
+//		try {
+//			String encodingPassowrd = passwordEncoder.encode(member.getPassword());
+//			member.setPassword(encodingPassowrd);
+//			int result = dao.insertRow(member);
+//			if (result > 0) {
+//				model.addAttribute("msg", "���� ���� �Ͽ����ϴ�");
+//			}
+//			System.out.println("success" + result);
+//		} catch (Exception e) {
+//			System.out.println("insert err:" + e.getMessage());
+//		}
+>>>>>>> cca2e0e7877dcac410d4d1bff6cf8b2ece401fc9
 
 		return "home";
 	}
@@ -94,4 +113,113 @@ public class GuestController {
 		
 		return "home";
 	}
+<<<<<<< HEAD
+=======
+
+//	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
+//	public String loginForm() {
+//		return "login/login";
+//	}
+
+//	@RequestMapping(value = "/login", method = RequestMethod.POST)
+//	public String login(@ModelAttribute Member member, HttpSession session) {
+//		MemberDao dao = sqlSession.getMapper(MemberDao.class);
+//		Member data = dao.login(member.getEmail());
+//		if (data == null) {
+//			return "login/login_fail";
+//		} else {
+//			boolean passchk = BCrypt.checkpw(member.getPassword(), data.getPassword());
+//			System.out.println("---passchk:" + passchk);
+//			if (passchk) {
+//				session.setAttribute("sessionemail", data.getEmail());
+//				session.setAttribute("sessionpassword", data.getPassword());
+//				session.setAttribute("sessionname", data.getName());
+//				session.setAttribute("sessionphoto", data.getPhoto());
+//				return "redirect:index";
+//			} else {
+//				return "login/login_fail";
+//			}
+//		}
+//	}
+//
+//	@RequestMapping(value = "/logOut", method = RequestMethod.GET)
+//	public String logOut(HttpSession session) {
+//		session.invalidate();
+//		return "redirect:index";
+//	}
+//
+//
+//
+
+//
+//
+
+//
+//	@RequestMapping(value = "/memberSearch", method = RequestMethod.GET)
+//	public String memberSearch(Model model) {
+//		MemberDao dao = sqlSession.getMapper(MemberDao.class);
+//		ArrayList<Member> members = dao.selectAll();
+//		model.addAttribute("members", members);
+//		return "member/member_search";
+//	}
+//
+//	@RequestMapping(value = "/memberUpdateForm", method = RequestMethod.GET)
+//	public String memberUpdateForm(Model model, @RequestParam String email) {
+//		MemberDao dao = sqlSession.getMapper(MemberDao.class);
+//		Member member = dao.selectOne(email);
+//		String encodingPassowrd = passwordEncoder.encode(member.getPassword());
+//		member.setPassword(encodingPassowrd);
+//		model.addAttribute("member", member);
+//		return "member/member_update_form";
+//	}
+//
+//	@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
+//	public String memberUpdate(@ModelAttribute Member member, @RequestParam CommonsMultipartFile imgfile) {
+//
+//		String originalname = imgfile.getOriginalFilename();
+//		String newfilename = "";
+//		String realpath = "";
+//		System.out.println("ori:" + originalname);
+//		System.out.println("before:" + member.getBeforephoto());
+//		if (originalname.equals("")) {
+//			member.setPhoto(member.getBeforephoto());
+//		} else {
+//			int position = originalname.lastIndexOf(".");
+//			String ext = originalname.substring(position);
+//			newfilename = member.getEmail() + ext;
+//			realpath = "resources/uploadattachs/";
+//			try {
+//				String path = "D:/ncs4webproject/ncs4project/src/main/webapp/resources/uploadattachs/";
+//				member.setPhoto(realpath + newfilename);
+//				byte bytes[] = imgfile.getBytes();
+//				BufferedOutputStream output = new BufferedOutputStream(new FileOutputStream(path + newfilename));
+//				output.write(bytes);
+//				output.flush();
+//				output.close();
+//			} catch (Exception e) {
+//				// TODO: handle exception
+//			}
+//		}
+//
+//		MemberDao dao = sqlSession.getMapper(MemberDao.class);
+//		try {
+//			int result = dao.updateRow(member);
+//			System.out.println("success" + result);
+//		} catch (Exception e) {
+//			System.out.println("insert err:" + e.getMessage());
+//		}
+//		return "member/member_result";
+//	}
+//
+//	@RequestMapping(value = "/memberDelete", method = RequestMethod.GET)
+//	public String memberDelete(Model model, @RequestParam String email) {
+//		MemberDao dao = sqlSession.getMapper(MemberDao.class);
+//		int result = dao.deleteRow(email);
+//		if (result > 0) {
+//			model.addAttribute("msg", "���� �Ǿ����ϴ�");
+//		}
+//		System.out.println("------>>>>" + result);
+//		return "member/member_result";
+//	}
+>>>>>>> cca2e0e7877dcac410d4d1bff6cf8b2ece401fc9
 }

@@ -9,7 +9,7 @@
 </head>
 <body>
 	<form id="employee_list_form" name="employee_list_form" method="get" action="employeeListForm">
-		<div class="container" style="margin-top: 100px">
+		<div class="container" style="margin-top: 30px">
 			<div class="row">
 				<div class="col-md-4"></div>
 				<div class="input-group mb-3 col-md-4 ">
@@ -30,32 +30,30 @@
 						<th scope="col" style="text-align: center;">신주소</th>
 						<th scope="col" style="text-align: center;">세부주소</th>
 						<th scope="col" style="text-align: center;">전화번호</th>
-						<th scope="col" style="text-align: center;">생년월일</th>
-						<th scope="col" style="text-align: center;">입사일</th>
 						<th scope="col" style="text-align: center;">직급</th>
+						<th scope="col" style="text-align: center;">지점</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="employees" items="employees" varStatus="status">
+					<c:forEach var="employees" items="${employees}" varStatus="status">
 						<tr>
 							<td style="text-align: center; vertical-align: middle;">
-								<a href="#"></a>
+								<a href="employeeDetail?empcode=${employees.empcode}">${employees.empcode}</a> 
 							</td>
-							<td style="text-align: center; vertical-align: middle;"></td>
-							<td style="text-align: center; vertical-align: middle;"></td>
-							<td style="text-align: center; vertical-align: middle;"></td>
-							<td style="text-align: center; vertical-align: middle;"></td>
-							<td style="text-align: center; vertical-align: middle;"></td>
-							<td style="text-align: center; vertical-align: middle;"></td>
-							<td style="text-align: center; vertical-align: middle;"></td>
-							<td style="text-align: center; vertical-align: middle;"></td>
-							<td style="text-align: center; vertical-align: middle;"></td>
-							<td style="text-align: center; vertical-align: middle;"></td>
+							<td style="text-align: center; vertical-align: middle;">${employees.name}</td>
+							<td style="text-align: center; vertical-align: middle;">${employees.age}</td>
+							<td style="text-align: center; vertical-align: middle;">${employees.gender}</td>
+							<td style="text-align: center; vertical-align: middle;">${employees.postno}</td>
+							<td style="text-align: center; vertical-align: middle;">${employees.newaddr}</td>
+							<td style="text-align: center; vertical-align: middle;">${employees.detailaddr}</td>
+							<td style="text-align: center; vertical-align: middle;">${employees.phone}</td>
+							<td style="text-align: center; vertical-align: middle;">${employees.memlevel}</td>
+							<td style="text-align: center; vertical-align: middle;">${employees.storename}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-			
+			<div style="margin-bottom: 100px"></div>
 		</div>
 	</form>
 
