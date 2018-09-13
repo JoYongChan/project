@@ -12,8 +12,7 @@
 	
 </script>
 <body>
-	<form name="vender_list" id="vender_list" method="post"
-		data-parsley-validate="true" enctype="multipart/form-data">
+	<form name="vender_list" id="vender_list" method="post">
 
 		<div class="container" style="margin-top: 10px">
 			<div class="row">
@@ -42,9 +41,9 @@
 					<c:forEach var="vender" items="${venders}" varStatus="status">
 						<tr>
 							<td style="text-align: center; vertical-align: middle;">
-								${vender.code}</td>
+								${vender.vendercode}</td>
 							<td style="text-align: center; vertical-align: middle;"><a
-								href="venderUpdateForm?code=${vender.code}"> ${vender.name}</a></td>
+								href="venderUpdateForm?vendercode=${vender.vendercode}"> ${vender.vendername}</a></td>
 							<td style="text-align: center; vertical-align: middle;">
 								${vender.busno}</td>
 							<td style="text-align: center; vertical-align: middle;">
@@ -63,9 +62,11 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<div>
-				<button class="btn btn-primary" type="button"
-					id="vender_list_addBtn">추가</button>
+			<div class="row">
+				<div>
+					<button class="btn btn-primary" type="button"
+						id="vender_list_addBtn" onclick="location.href='venderInsertForm'">거래처 추가</button>
+				</div>
 			</div>
 		</div>
 	</form>

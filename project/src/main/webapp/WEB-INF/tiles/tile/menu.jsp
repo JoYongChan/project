@@ -36,9 +36,8 @@
 				class="fas fa-fw fa-folder"></i> <span>재고</span>
 		</a>
 			<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-				<a class="dropdown-item" href="productList">식자재 관리</a> <a
-					class="dropdown-item" href="productStockList">식자재재고 관리</a> <a
-					class="dropdown-item" href="productBuyList">식자재 구매관리</a>
+				<a class="dropdown-item" href="productList">재고물품 관리</a> <a
+					class="dropdown-item" href="productStockList">재고물품재고 관리</a>
 			</div></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
@@ -47,7 +46,8 @@
 		</a>
 			<div class="dropdown-menu" aria-labelledby="pagesDropdown">
 				<a class="dropdown-item" href="venderList">거래처 관리</a> <a
-					class="dropdown-item" href="venderproductList">거래처물품 관리</a>
+					class="dropdown-item" href="venderproductList">거래처물품 관리</a> <a
+					class="dropdown-item" href="venderProductBuyInsertForm">거래처물품 구매관리</a>
 			</div></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
@@ -55,9 +55,7 @@
 				class="fas fa-fw fa-folder"></i> <span>판매</span>
 		</a>
 			<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-				<a class="dropdown-item" href="saleproductList">판매물품 관리</a> <a
-					class="dropdown-item" href="saleList">판매 관리</a> <a
-					class="dropdown-item" href="salenoteList">매출 조회</a>
+				<a class="dropdown-item" href="saleproductList">판매물품 관리</a>
 			</div></li>
 			<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle"	href="#" id="pagesDropdown" 

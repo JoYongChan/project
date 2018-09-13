@@ -12,8 +12,7 @@
 	
 </script>
 <body>
-	<form name="venderproduct_list" id="venderproduct_list" method="post"
-		data-parsley-validate="true" enctype="multipart/form-data">
+	<form name="venderproduct_list" id="venderproduct_list" method="post">
 
 		<div class="container" style="margin-top: 10px">
 			<div class="row">
@@ -35,22 +34,28 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="venderProduct" items="${venderProducts}" varStatus="status">
+					<c:forEach var="venderproducts" items="${venderproducts}" varStatus="status">
 						<tr>
-							<td style="text-align: center; vertical-align: middle;"> ${venderProduct.vendername}</td>
+							<td style="text-align: center; vertical-align: middle;"> ${venderproducts.vendername}</td>
 							<td style="text-align: center; vertical-align: middle;"><a
-								href="venderproductUpdateForm?venderproductcode=${venderProduct.venderproductcode}">
-								${venderProduct.proname}</a></td>
+								href="venderproductUpdateForm?venderproductcode=${venderproducts.venderproductcode}">
+								${venderproducts.proname}</a></td>
 							<td style="text-align: center; vertical-align: middle;">
-								${venderProduct.capacity}</td>
+								${venderproducts.capacity}</td>
 							<td style="text-align: center; vertical-align: middle;">
-								${venderProduct.price}</td>
+								${venderproducts.price}</td>
 							<td style="text-align: center; vertical-align: middle;">
-								${venderProduct.memo}</td>
+								${venderproducts.memo}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
+			<div class="row">
+				<div>
+					<button class="btn btn-primary" type="button"
+						id="venderproduct_list_addBtn" onclick="location.href='venderproductInsertForm'">거래처물품 추가</button>
+				</div>
+			</div>
 		</div>
 	</form>
 </body>

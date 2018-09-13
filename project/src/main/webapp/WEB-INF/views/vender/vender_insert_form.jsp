@@ -7,11 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- 각 필드들의 id로 지정된 것들은 jQuery와 JavaScript에서 인식하는데에 사용 -->
-	<!-- 컨트롤러에서는 name으로 매칭해서 사용 -->
 	<form id="vender_insert_form" name="vender_insert_form" method="post"
-		action="venderInsert" data-parsley-validate="true"
-		enctype="multipart/form-data">
+		action="venderInsert" data-parsley-validate="true">
 		<input type="hidden" id="vender_insert_form_confirm_yn" value="n">
 		<h1 style="text-align: center">거래처 등록</h1>
 
@@ -24,8 +21,7 @@
 							class="fas fa-envelope" style="font-size: 10"> 거래처 코드</i>
 						</span>
 					</div>
-					<!-- ime-mode는 입력제어 disabled일 경우 영어와 숫자만 입력 -->
-					<input type="text" id="vender_insert_form_code" name="code"
+					<input type="text" id="vender_insert_form_vendercode" name="vendercode"
 						maxlength="4" onkeydown="onlyNumber(event)"
 						onkeyup="removeChar(event)" style="ime-mode: disabled;"
 						class="form-control col-md-3" placeholder="Code" aria-label="code"
@@ -51,7 +47,7 @@
 						<span class="input-group-text" style="width: 150px"><i
 							class="fas fa-user" style="font-size: 10"> 거래처이름</i></span>
 					</div>
-					<input type="text" name="name" class="form-control"
+					<input type="text" name="vendername" class="form-control"
 						placeholder="이름 입력" aria-label="Name" maxlength="20"
 						aria-describedby="basic-addon1" required="true"
 						data-parsley-error-message="이름을 입력하세요!"
@@ -91,7 +87,7 @@
 						aria-label="busno3" aria-describedby="basic-addon1" maxlength="5"
 						style="width: 20%" required="true" onkeydown="onlyNumber(event)"
 						onkeyup="removeChar(event)"
-						data-parsley-error-message="전화번호 가운데 숫자들을 입력하세요!"
+						data-parsley-error-message="사업자번호 마지막 숫자들을 입력하세요!"
 						data-parsley-errors-container="div[id='vender_insert_form_busnoError']"
 						data-parsley-type="number">
 				</div>
@@ -183,13 +179,13 @@
 							class="fas fa-home" style="font-size: 10"> 우편번호</i></span>
 					</div>
 					<input type="text" class="form-control"
-						id="vender_insert_form_zipcode" name="zipcode" placeholder="우편번호"
+						id="postno" name="zipcode" placeholder="우편번호"
 						aria-label="zipcode" aria-describedby="basic-addon1" maxlength="5"
 						required="true" data-parsley-error-message="우편번호를 입력하세요!"
 						data-parsley-errors-container="div[id='vender_insert_form_zipcodeError']">
 					<button type="button" class="col-md-3 btn btn-primary"
 						style="font-align: center; margin: 3px"
-						onclick="vender_insert_form_findAddr()">주소검색</button>
+						onclick="ZipcodeFind()">주소검색</button>
 				</div>
 			</div>
 
@@ -208,7 +204,7 @@
 							class="fas fa-home" style="font-size: 10"> 도로명주소</i></span>
 					</div>
 					<input type="text" class="form-control"
-						id="vender_insert_form_newaddr" name="newaddr" placeholder="도로명주소"
+						id="newaddr" name="newaddr" placeholder="도로명주소"
 						aria-label="newaddr" aria-describedby="basic-addon1"
 						required="true" data-parsley-error-message="도로명주소를 입력하세요!"
 						data-parsley-errors-container="div[id='vender_insert_form_newaddrError']">
@@ -230,7 +226,7 @@
 							class="fas fa-home" style="font-size: 10"> 지번주소</i></span>
 					</div>
 					<input type="text" class="form-control"
-						id="vender_insert_form_oldaddr" name="oldaddr" placeholder="지번주소"
+						id="oldaddr" name="oldaddr" placeholder="지번주소"
 						aria-label="oldaddr" aria-describedby="basic-addon1"
 						required="true" data-parsley-error-message="지번주소를 입력하세요!"
 						data-parsley-errors-container="div[id='vender_insert_form_oldaddrError']">
@@ -274,7 +270,7 @@
 				<button type="button" id="vender_insert_form_save"
 					class="col-md-1 btn btn-primary"
 					style="font-align: center; margin: 3px">저장</button>
-				<button type="button" class="col-md-1 btn btn-primary"
+				<button type="button" class="col-md-1 btn btn-warning"
 					id="vender_insert_form_cancel"
 					style="font-align: center; margin: 3px"
 					onclick="location.href='venderList'">취소</button>
