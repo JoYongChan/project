@@ -91,6 +91,7 @@
 					<c:when test="${sessionstorecode ==null}">
 						<label>&nbsp관리자계정 로그인 시 </label>
 						<label>&nbsp확인 가능합니다.</label>
+						<a class="dropdown-item" href="tableSelect">테이블관리</a>
 					</c:when>
 					<c:otherwise>
 						<a class="dropdown-item" href="tableAccount">테이블계정 등록</a> 
