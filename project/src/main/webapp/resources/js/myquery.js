@@ -1,61 +1,64 @@
-function comment_update(c_code){
-	var commentList = $('#commentList').val();
-	var b_code = $('#b_code').val();
-    $.ajax({
-        type:'GET',
-        url : "commentList",
-        dataType : "json",
-        data : "commentList=" + commentList + "&b_code=" + b_code,
-        contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
-        success : function(data){
-            
-            var html = "";
-            var cCnt = data.length;
-            
-            if(data.length > 0){
-                
-                for(i=0; i<data.length; i++){
-                    html += "<div>";
-                    html += "<div><table class='table'><h6><strong>"+data[i].writer+"</strong></h6>";
-                    html += "<input type='text' value= "+ data[i].content+"><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
-                    		"<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
-                    		"<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
-                    		"<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
-                    		"<td><a href='#' onClick='comment_update()' " +
-                    		"class='btn btn-warning btn-sm'>댓글수정</a>&nbsp" +
-                    		"<a href='#' onClick='getCommentList()' " +
-                    		"class='btn btn-danger btn-sm'>취소</a></td></tr>";
-                    html += "</table></div>";
-                    html += "</div>";
-                }
-                
-            } else {
-                
-                html += "<div>";
-                html += "<div><table class='table'><h6><strong>등록된 댓글이 없습니다.</strong></h6>";
-                html += "</table></div>";
-                html += "</div>";
-                
-            }
-            
-            $("#cCnt").html( cCnt );
-            $("#commentList").html(html);
-            
-        },
-        error:function(request,status,error){
-            
-       }
-        
-    });
-}
 //function comment_update(){
+//	var commentList = $('#commentList').val();
+//	var b_code = $('#b_code').val();
+//	$(".update").index(this);
+//	 var select = document.querySelector('.updatebtn');
+//    $.ajax({
+//        type:'GET',
+//        url : "commentList",
+//        dataType : "json",
+//        data : "commentList=" + commentList + "&b_code=" + b_code,
+//        contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+//        success : function(data){
+//            
+//            var html = "";
+//            var cCnt = data.length;
+//            
+//            if(data.length > 0){
+//            	
+//                for(i=0; i<data.length; i++){
+//                    html += "<div>";
+//                    html += "<div><table class='table'><h6><strong>"+data[i].writer+"</strong></h6>";
+//                    html += "<tr  class='select'><input type='text' value= "+ data[i].content+"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
+//                    		"<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
+//                    		"<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
+//                    		"<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
+//                    		"<td><a href='#' onClick='comment_update()' " +
+//                    		"class='btn btn-warning btn-sm update'>댓글수정</a>&nbsp" +
+//                    		"<a href='#' onClick='getCommentList()' " +
+//                    		"class='btn btn-danger btn-sm'>취소</a></td></tr>";
+//                    html += "</table></div>";
+//                    html += "</div>";
+//                }
+//                
+//            } else {
+//                
+//                html += "<div>";
+//                html += "<div><table class='table'><h6><strong>등록된 댓글이 없습니다.</strong></h6>";
+//                html += "</table></div>";
+//                html += "</div>";
+//                
+//            }
+//            
+//            $("#cCnt").html( cCnt );
+//            $("#commentList").html(html);
+//            
+//        },
+//        error:function(request,status,error){
+//            
+//       }
+//        
+//    });
+//}
+//function comment_update(c_code){
 //	$('#commentupdateModal').modal('show');
-//	$(".commentupdatemodal-body").html("<div class='col-md-1'></div><div class='input-group-prepend'><span class='input-group-text'>내용</span><input type='text'/></div>");
+//	$(".commentupdatemodal-body").html("<div class='col-md-1'></div><div class='input-group-prepend'><span class='input-group-text'>내용</span><input type='text' id='content' name='content' /></div>");
+//	alert('tlqkf');
 //	$('.modaldetail_btn2').text('취소');
 //	$('.modaldetail_btn1').on('click',function(){
 //		$.ajax({
-//	        type:'GET',
-//	        url : "commentDelete",
+//	        type:'POST',
+//	        url : "commentUpdate",
 //	        data : "c_code=" + c_code,
 //	        datatype : 'json',
 //	        success : function(data){
@@ -65,7 +68,7 @@ function comment_update(c_code){
 //	            }
 //	        },
 //	        error:function(request,status,error){
-//	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+//	            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 //	       }
 //	        
 //	    });
@@ -75,8 +78,8 @@ function comment_update(c_code){
 function comment_delete(c_code){
 	$('#commentdeleteModal').modal('show');
 	$('.commentdeletemodal-body').text('삭제 하시겠습니까?');
-	$('.modaldetail_btn2').text('취소');
-	$('.modaldetail_btn1').on('click',function(){
+	$('.commentdeletemodal_btn2').text('취소');
+	$('.commentdeletemodal_btn1').on('click',function(){
 		$.ajax({
 	        type:'GET',
 	        url : "commentDelete",
@@ -153,9 +156,7 @@ function getCommentList(){
                     		"<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
                     		"<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
                     		"<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
-                    		"<td><a href='#' onClick='comment_update()' " +
-                    		"class='btn btn-warning btn-sm'>댓글수정</a>&nbsp" +
-                    		"<a href='#' onClick='comment_delete("+ data[i].c_code +")' " +
+                    		"<td><a href='#' onClick='comment_delete("+ data[i].c_code +")' " +
                     		"class='btn btn-danger btn-sm'>댓글삭제</a></td></tr>";
                     html += "</table></div>";
                     html += "</div>";
@@ -244,7 +245,6 @@ function removeChar(event) {
 }
 
 $(document).ready(function(){
-<<<<<<< HEAD
 	// board_detail
 	$('#board_detail_boarddeletebtn').on('click',function(){
 		var b_seq = $('#boardb_seq').val();
@@ -270,13 +270,8 @@ $(document).ready(function(){
 		});
 	});
 
-	//table_insert_form
-	$('#table_confirm').on('click',function(){
-		alert('중복체크');
-=======
 	$('#storecode').keyup(function () { 
 	    this.value = this.value.replace(/[^0-9]/g,'');
->>>>>>> cca2e0e7877dcac410d4d1bff6cf8b2ece401fc9
 	});
 	$('#ceocode').keyup(function () { 
 		this.value = this.value.replace(/[^0-9]/g,'');
@@ -309,7 +304,6 @@ $(document).ready(function(){
 	});
 	
 	 $('#employeedatatable').DataTable({});
-<<<<<<< HEAD
 	 
 		//<!-- Bootstrap - DataTables -->
 		$('#example').DataTable();
@@ -320,8 +314,6 @@ $(document).ready(function(){
 		});
 		
 	
-	
-=======
 	 $('#storedatatable').DataTable({});
 	 $('#tabledatatable').DataTable({});
 	 $('#employeesalarydatatable').DataTable({}); 
@@ -583,7 +575,6 @@ $(document).ready(function(){
 		
 	});
     
->>>>>>> cca2e0e7877dcac410d4d1bff6cf8b2ece401fc9
 });
 
 	

@@ -10,17 +10,14 @@
 		<property name="order" value="2"></property>
 	
 	</bean>
-<<<<<<< HEAD
 	
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
        <property name="order" value="0"/>
- </bean>
-    
-  <bean id="download" class="com.naver.project.service.DownloadView"/>
+ 	</bean>
+     <bean id="download" class="com.naver.project.service.DownloadView"/>
   
-=======
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order" value="0"></property>
 	</bean>
->>>>>>> cca2e0e7877dcac410d4d1bff6cf8b2ece401fc9
+	
 </beans>

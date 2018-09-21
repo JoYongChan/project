@@ -316,9 +316,17 @@ public class BoardController {
 		@ResponseBody
 		public String commentDelete(@RequestParam int c_code, @ModelAttribute Comment comment) {
 			CommentDao dao = sqlSession.getMapper(CommentDao.class);
+			System.out.println("c_code===>>>"+c_code);
 				dao.commentDelete(c_code);
 			return "success";
 		}
-
+//		@RequestMapping(value = "/commentUpdate", method = RequestMethod.POST)
+//		@ResponseBody
+//		public String commentUpdate(@RequestParam int c_code, @ModelAttribute Comment comment) {
+//			CommentDao dao = sqlSession.getMapper(CommentDao.class);
+//			System.out.println("c_code===>>>"+c_code);
+//				dao.selectUpdate(c_code);
+//			return "success";
+//		}
 	
 }
