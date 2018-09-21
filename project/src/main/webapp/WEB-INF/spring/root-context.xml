@@ -19,5 +19,8 @@
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order" value="0"></property>
 	</bean>
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 32ab57dfb3ad60e86bf06c3c98837f29acd49985
 </beans>

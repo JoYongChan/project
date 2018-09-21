@@ -47,8 +47,7 @@
 				</a>
 					<div class="dropdown-menu dropdown-menu-right"
 						aria-labelledby="userDropdown">
-						<a class="dropdown-item" href="boardListForm">게시판</a> <a
-							class="dropdown-item" href="#">Activity Log</a>
+						<a class="dropdown-item" href="boardListForm">게시판</a>
 						<div class="dropdown-divider"></div>
 						<c:choose>
 							<c:when test="${sessionstorecode == storemanagement.storecode}">

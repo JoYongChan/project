@@ -47,7 +47,7 @@ public class BoardController {
 	@Autowired
 	private Comment comment;
 	@Autowired
-	private BoardPaging boardpaging;
+	private BoardPaging boardpaging; 
 	static String find;
 	@RequestMapping(value = "/boardInsertForm", method = RequestMethod.GET)
 	public String boardInsertForm(Model model) {
@@ -63,17 +63,17 @@ public class BoardController {
         try{
             String fileName = upload.getOriginalFilename();
             byte[] bytes = upload.getBytes();
-            String uploadPath = "D:/ncs4lastproject/project/src/main/webapp/resources/cheditoruploads/" + fileName;//ÀúÀå°æ·Î
+            String uploadPath = "C:Users/IT/Desktop/sourcetree/project/src/main/webapp/resources/cheditoruploads" + fileName;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             out = new FileOutputStream(new File(uploadPath));
             out.write(bytes);
             String callback = request.getParameter("CKEditorFuncNum");
             printWriter = response.getWriter();
-            String fileUrl = "resources/cheditoruploads/" + fileName;//url°æ·Î
+            String fileUrl = "resources/cheditoruploads/" + fileName;//urlï¿½ï¿½ï¿½
             printWriter.println("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction("
                     + callback
                     + ",'"
                     + fileUrl
-                    + "','ÀÌ¹ÌÁö¸¦ ¾÷·Îµå ÇÏ¿´½À´Ï´Ù.'"
+                    + "','ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.'"
                     + ")</script>");
             printWriter.flush();
         }catch(IOException e){
@@ -228,7 +228,7 @@ public class BoardController {
 		board.setB_email((String) session.getAttribute("sessionemail"));
 		board.setB_name((String) session.getAttribute("sessionname"));
 		board.setB_seq(b_seq);
-		board.setB_title("[´ä±Û]"+b_title);
+		board.setB_title("[ï¿½ï¿½ï¿½]"+b_title);
 		model.addAttribute("board",board);
 		System.out.println("----->>>title:::"+b_title);
 		return "board/board_reply_form";

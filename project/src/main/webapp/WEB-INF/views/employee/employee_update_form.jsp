@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form id="employee_update_form" name="employee_update_form" method="post" action="employeeUpdateForm" data-parsley-validate="true"
+	<form id="employee_update_form" name="employee_update_form" method="post" action="employeeUpdateForm"
 	enctype="multipart/form-data">
 		<input type="hidden" id="employeeconfirm_yn" value="n">
 		<input type="hidden" name="hiredate" value="${employee.hiredate}">

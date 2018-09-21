@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form id="employee_insert_form" name="employee_insert_form" method="post" action="employeeInsert" data-parsley-validate="true"
+	<form id="employee_insert_form" name="employee_insert_form" method="post" action="employeeInsert"
 	enctype="multipart/form-data">
 		<input type="hidden" id="employeeconfirm_yn" value="n">
 		<div class="container" style="margin-top: 30px">

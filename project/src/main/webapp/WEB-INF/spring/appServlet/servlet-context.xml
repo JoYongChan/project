@@ -3,9 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd"
+		>
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -53,6 +56,7 @@
 		</beans:property>
 	</beans:bean>
 	
+<<<<<<< HEAD
 	<!-- fileupload -->
 	<beans:bean id="multipartResolver"
      class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -61,6 +65,15 @@
      <beans:property name="maxUploadSize" value="5242880" />
     </beans:bean>
 
+=======
+	<!-- websocket -->
+	<websocket:handlers>
+		<websocket:mapping handler="echoHandler" path="/echo"/>
+		<websocket:sockjs/>
+	</websocket:handlers>
+	
+	<beans:bean id="echoHandler" class="com.naver.project.EchoHandler"/>
+>>>>>>> 32ab57dfb3ad60e86bf06c3c98837f29acd49985
 	
 	<context:component-scan base-package="com.naver.project" />
 	
