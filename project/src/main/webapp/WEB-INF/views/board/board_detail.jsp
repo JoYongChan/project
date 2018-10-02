@@ -49,7 +49,7 @@
 						<span class="input-group-text" style="width: 100px"><i
 							style="font-size: 30">E-mail</i></span>
 					</div>
-					<input type="email" class="form-control" id="board_detail_b_email"
+					<input type="text" class="form-control" id="board_detail_b_email"
 						name="b_email" readonly="readonly" style="ime-mode: disabled"
 						value="${board.b_email}"
 						aria-describedby="basic-addon1" required="true" />

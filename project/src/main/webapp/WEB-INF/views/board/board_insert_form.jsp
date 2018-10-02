@@ -28,9 +28,9 @@
 				<div class="col-md-1"></div>
 				<div class="input-group mb-2 col-md-10">
 					<div class="input-group-prepend">
-						<span class="input-group-text" style="width: 100px"><i style="font-size: 30">E-mail</i></span>
+						<span class="input-group-text" style="width: 100px"><i style="font-size: 30">지점</i></span>
 					</div>
-					<input type="email" class="form-control" id="board_insert_b_email" name="b_email" 
+					<input type="text" class="form-control" id="board_insert_b_email" name="b_email" value="${sessionstorename}"
 						 />
 					<div class="input-group-prepend">
 						<span class="input-group-text" style="width: 100px"><i
