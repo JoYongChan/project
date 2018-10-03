@@ -29,7 +29,7 @@
 					</div>
 					<select id="selectemployee" name="empcode" style="width: 410px">
 						<c:forEach var="employee" items="${employee}">
-							<option value="${employee.empcode}" >${employee.empcode}</option>
+							<option value="${employee.empcode}" >${employee.empcode} &nbsp&nbsp ${employee.name}</option>
 						</c:forEach> 
 					</select>
 				</div>

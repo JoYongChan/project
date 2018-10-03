@@ -19,7 +19,16 @@
 				class="fas fa-fw fa-folder"></i> <span>게시판</span>
 		</a>
 			<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-				<a class="dropdown-item" href="boardPageList">게시판</a>
+				<c:choose>
+					<c:when test="${sessionstorecode ==null}">
+						<label>&nbsp관리자계정 로그인 시 </label>
+						<label>&nbsp확인 가능합니다.</label>
+					</c:when>
+					<c:otherwise>
+						<a class="dropdown-item" href="boardPageList">게시판</a>
+					</c:otherwise>
+				</c:choose>
+				
 			</div></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
@@ -27,8 +36,17 @@
 				class="fas fa-fw fa-folder"></i> <span>고객관리</span>
 		</a>
 			<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-				<a class="dropdown-item" href="guestInsertForm">고객가입</a> <a
-					class="dropdown-item" href="guestListForm">고객목록</a>
+				<c:choose>
+					<c:when test="${sessionstorecode ==null}">
+						<label>&nbsp관리자계정 로그인 시 </label>
+						<label>&nbsp확인 가능합니다.</label>
+					</c:when>
+					<c:otherwise>
+						<a class="dropdown-item" href="guestInsertForm">고객가입</a>
+						<a class="dropdown-item" href="guestListForm">고객목록</a>
+					</c:otherwise>
+				</c:choose>
+
 			</div></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
@@ -36,8 +54,17 @@
 				class="fas fa-fw fa-folder"></i> <span>재고</span>
 		</a>
 			<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-				<a class="dropdown-item" href="productList">재고물품 관리</a> <a
-					class="dropdown-item" href="productStockList">재고물품재고 관리</a>
+				<c:choose>
+					<c:when test="${sessionstorecode ==null}">
+						<label>&nbsp관리자계정 로그인 시 </label>
+						<label>&nbsp확인 가능합니다.</label>
+					</c:when>
+					<c:otherwise>
+						<a class="dropdown-item" href="productList">재고물품 관리</a>
+						<a class="dropdown-item" href="productStockList">재고물품재고 관리</a>
+					</c:otherwise>
+				</c:choose>
+
 			</div></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
@@ -45,9 +72,18 @@
 				class="fas fa-fw fa-folder"></i> <span>거래처</span>
 		</a>
 			<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-				<a class="dropdown-item" href="venderList">거래처 관리</a> <a
-					class="dropdown-item" href="venderproductList">거래처물품 관리</a> <a
-					class="dropdown-item" href="venderProductBuyInsertForm">거래처물품 구매관리</a>
+				<c:choose>
+					<c:when test="${sessionstorecode ==null}">
+						<label>&nbsp관리자계정 로그인 시 </label>
+						<label>&nbsp확인 가능합니다.</label>
+					</c:when>
+					<c:otherwise>
+						<a class="dropdown-item" href="venderList">거래처 관리</a>
+						<a class="dropdown-item" href="venderproductList">거래처물품 관리</a>
+						<a class="dropdown-item" href="venderProductBuyInsertForm">거래처물품 구매관리</a>
+					</c:otherwise>
+				</c:choose>
+
 			</div></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
@@ -55,7 +91,16 @@
 				class="fas fa-fw fa-folder"></i> <span>판매</span>
 		</a>
 			<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-				<a class="dropdown-item" href="saleproductList">판매물품 관리</a>
+				<c:choose>
+					<c:when test="${sessionstorecode ==null}">
+						<label>&nbsp관리자계정 로그인 시 </label>
+						<label>&nbsp확인 가능합니다.</label>
+					</c:when>
+					<c:otherwise>
+						<a class="dropdown-item" href="saleproductList">판매물품 관리</a>
+					</c:otherwise>
+				</c:choose>
+
 			</div></li>
 			<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle"	href="#" id="pagesDropdown" 

@@ -40,7 +40,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text" style="width: 100px"><i style="font-size: 30">E-mail</i></span>
 					</div>
-					<input type="email" class="form-control" id="board_page_list_b_email" name="b_email" 
+					<input type="text" class="form-control" id="board_page_list_b_email" name="b_email" 
 						style="ime-mode: disabled" placeholder="id" aria-label="Id" value="${board.b_email }"
 						aria-describedby="basic-addon1" required="true" 
 						 />

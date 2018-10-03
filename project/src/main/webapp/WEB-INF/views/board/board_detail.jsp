@@ -49,7 +49,7 @@
 						<span class="input-group-text" style="width: 100px"><i
 							style="font-size: 30">E-mail</i></span>
 					</div>
-					<input type="email" class="form-control" id="board_detail_b_email"
+					<input type="text" class="form-control" id="board_detail_b_email"
 						name="b_email" readonly="readonly" style="ime-mode: disabled"
 						value="${board.b_email}"
 						aria-describedby="basic-addon1" required="true" />
@@ -76,14 +76,6 @@
 						type="text" name="b_beforeattach" class="form-control"
 						placeholder="b_beforeattach" aria-label="name"
 						aria-describedby="basic-addon1" value="${board.b_attach}" />
-<%-- 					<c:if test="${sessionemail != null }"> --%>
-<!-- 					<input type="file" id="board_detail_b_attach" name="file" -->
-<!-- 						class="form-control" placeholder="name" aria-label="name" -->
-<%-- 						aria-describedby="basic-addon1" value="${board.b_attach}" /> <input --%>
-<!-- 						type="text" name="b_beforeattach" class="form-control" -->
-<!-- 						placeholder="b_beforeattach" aria-label="name" -->
-<%-- 						aria-describedby="basic-addon1" value="${board.b_attach}" /> --%>
-<%-- 					</c:if> --%>
 				</div>
 			</div>
 			<div class="row">
@@ -122,25 +114,6 @@
 					</div>
 						<button type="button" id="board_detail_boardreply" name="boardreply"
 						class="btn btn-info btn-sm" onclick="location.href = 'boardReplyForm?b_title=${board.b_title}&b_seq=${board.b_seq }'">답글달기</button>
-<%-- 				<c:if --%>
-<%-- 					test="${sessionemail == 'admin@a.com' || sessionemail == board.b_email }"> --%>
-<!-- 					<button type="submit" id="board_detail_boardupdate" name="boardupdate" -->
-<!-- 						class="btn btn-warning">글수정</button> -->
-<!-- 					<button type="button" id="board_detail_boarddeletebtn" name="boarddeletebtn" -->
-<!-- 						class="btn btn-danger">글삭제</button> -->
-<%-- 				</c:if> --%>
-<%-- 				<c:if test="${sessionemail != null }"> --%>
-<%-- 					<c:choose> --%>
-<%-- 						<c:when test="${board.b_step ==0 }"> --%>
-<!-- 						<button type="button" id="board_detail_boardreply" name="boardreply" -->
-<%-- 						class="btn btn-info" onclick="location.href = 'boardReplyForm?b_title=${board.b_title}&b_seq=${board.b_seq }'">댓글</button> --%>
-<%-- 						</c:when> --%>
-<%-- 						<c:otherwise> --%>
-<!-- 						<button type="button" id="board_detail_boardreply" name="boardreply" -->
-<%-- 						class="btn btn-info" onclick="location.href = 'boardReplyForm?b_title=${board.b_title}&b_seq=${board.b_ref }'">댓글</button> --%>
-<%-- 						</c:otherwise> --%>
-<%-- 					</c:choose> --%>
-<%-- 				</c:if> --%>
 
 			
 			</div>
