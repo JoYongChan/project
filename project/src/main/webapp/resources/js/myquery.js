@@ -622,8 +622,6 @@ $(document).ready(function(){
 		
 	});
     
-<<<<<<< HEAD
-=======
     $('#venderproduct_insert_form_save').on('click', function(){
 		var confirm = $('#venderproduct_insert_form_confirm_yn').val();
 		if(confirm == 'y'){
@@ -1014,7 +1012,6 @@ $(document).ready(function(){
 				$('#productstock_update_form_curstock').attr("value", stock);
 			});
     
->>>>>>> 32ab57dfb3ad60e86bf06c3c98837f29acd49985
 });
 
 	

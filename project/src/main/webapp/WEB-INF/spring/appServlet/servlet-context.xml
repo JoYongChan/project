@@ -56,7 +56,6 @@
 		</beans:property>
 	</beans:bean>
 	
-<<<<<<< HEAD
 	<!-- fileupload -->
 	<beans:bean id="multipartResolver"
      class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -65,7 +64,6 @@
      <beans:property name="maxUploadSize" value="5242880" />
     </beans:bean>
 
-=======
 	<!-- websocket -->
 	<websocket:handlers>
 		<websocket:mapping handler="echoHandler" path="/echo"/>
@@ -73,7 +71,6 @@
 	</websocket:handlers>
 	
 	<beans:bean id="echoHandler" class="com.naver.project.EchoHandler"/>
->>>>>>> 32ab57dfb3ad60e86bf06c3c98837f29acd49985
 	
 	<context:component-scan base-package="com.naver.project" />
 	

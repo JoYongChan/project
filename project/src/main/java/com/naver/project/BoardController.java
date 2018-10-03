@@ -63,17 +63,17 @@ public class BoardController {
         try{
             String fileName = upload.getOriginalFilename();
             byte[] bytes = upload.getBytes();
-            String uploadPath = "C:Users/IT/Desktop/sourcetree/project/src/main/webapp/resources/cheditoruploads" + fileName;//������
+            String uploadPath = "C:Users/IT/Desktop/sourcetree/project/src/main/webapp/resources/cheditoruploads" + fileName;//占쏙옙占쏙옙占쏙옙
             out = new FileOutputStream(new File(uploadPath));
             out.write(bytes);
             String callback = request.getParameter("CKEditorFuncNum");
             printWriter = response.getWriter();
-            String fileUrl = "resources/cheditoruploads/" + fileName;//url���
+            String fileUrl = "resources/cheditoruploads/" + fileName;//url占쏙옙占�
             printWriter.println("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction("
                     + callback
                     + ",'"
                     + fileUrl
-                    + "','�̹����� ���ε� �Ͽ����ϴ�.'"
+                    + "','이미지 업로드.'"
                     + ")</script>");
             printWriter.flush();
         }catch(IOException e){
@@ -228,7 +228,7 @@ public class BoardController {
 		board.setB_email((String) session.getAttribute("sessionemail"));
 		board.setB_name((String) session.getAttribute("sessionname"));
 		board.setB_seq(b_seq);
-		board.setB_title("[���]"+b_title);
+		board.setB_title("[답글]"+b_title);
 		model.addAttribute("board",board);
 		System.out.println("----->>>title:::"+b_title);
 		return "board/board_reply_form";
